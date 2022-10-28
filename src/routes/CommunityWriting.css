@@ -1,0 +1,66 @@
+.formBox,
+.warning {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin-right: 30px; */
+  width: 100%;
+}
+
+.warning {
+  padding-top: 20vh;
+}
+
+.writingBox {
+  padding-top: 20vh;
+}
+
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(125, 125, 125, 0.8);
+  width: 60%;
+}
+
+.formHeader button {
+  height: 50%;
+  padding: 8px 20px;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 8px;
+  background-color: rgb(240, 240, 240);
+  color: rgb(255, 103, 80);
+  font-weight: 600;
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+.formHeader button:hover {
+  cursor: pointer;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 60%;
+}
+
+.formContent input,
+.formContent textarea {
+  border: 1px solid rgba(125, 125, 125, 0.3);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formContent input {
+  margin-bottom: 10px;
+  height: 30px;
+}
+
+.formContent textarea {
+  padding-top: 10px;
+  height: 380px;
+  font-size: 14px;
+}

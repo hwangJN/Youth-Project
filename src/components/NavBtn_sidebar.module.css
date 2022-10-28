@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "scdream5";
+  src: url("../fonts/SCDream7.otf");
+}
+@font-face {
+  font-family: "MICEGothic Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+.login {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.button {
+  display: block;
+  height: 50px;
+  width: 160px;
+  font-family: "MICEGothic Bold";
+
+  background-color: rgba(215, 215, 215, 0.449);
+  border: none;
+  color: rgb(39, 39, 39);
+  padding: 12px 15px;
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 14px;
+  margin: 10px 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.button:hover {
+  background-color: rgb(165, 165, 165, 0.449);
+}
+@media (max-width: 630px) {
+  .button {
+    width: 130px;
+    font-size: 11px;
+  }
+}

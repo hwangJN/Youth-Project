@@ -1,0 +1,287 @@
+@font-face {
+  font-family: "scdream2";
+  src: url("../fonts/SCDream2.otf");
+}
+
+@font-face {
+  font-family: "scdream4";
+  src: url("../fonts/SCDream4.otf");
+}
+@font-face {
+  font-family: "scdream5";
+  src: url("../fonts/SCDream5.otf");
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MICEGothic Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+.adultName {
+  margin-left: 10px;
+}
+.container {
+  padding-top: 120px;
+  background-color: rgba(225, 158, 158, 0.377);
+  height: 750px;
+  display: flex;
+
+  justify-content: space-around;
+}
+.titleDiv {
+  margin-right: 0;
+  margin-top: 50px;
+  height: 50px;
+  width: 580px;
+  padding-left: 80px;
+  position: relative;
+}
+.myApplyBtn,
+.gotoProfileBtn,
+.gotoProfileBtn_2 {
+  font-family: "MICEGothic Bold";
+  font-weight: 500;
+  width: 80px;
+  height: 45px;
+  font-size: 12px;
+  background-color: rgb(141, 124, 252);
+  color: white;
+  border: 0px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.myApplyBtn {
+  margin-left: 330px;
+}
+.gotoProfileBtn {
+  margin-left: 280px;
+}
+
+.myApplyBtn:hover,
+.gotoProfileBtn:hover,
+.gotoProfileBtn_2:hover {
+  background-color: rgb(81, 47, 216);
+}
+.h1 {
+  text-align: left;
+  margin-bottom: 0px;
+  font-size: 26px;
+  font-family: "MICEGothic Bold";
+}
+.icon {
+  padding-right: 12px;
+  font-size: 27px;
+}
+.index {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 95px;
+  height: 39px;
+}
+.span {
+  display: block;
+  margin-left: 90px;
+  font-size: 11px;
+  font-family: "Pretendard-Regular";
+}
+
+.form {
+  background-color: rgb(255, 255, 255);
+  width: 660px;
+  /*margin: 0 auto;*/
+  height: 660px;
+  padding-top: 5px;
+
+  border-radius: 8px;
+}
+
+.mailForm {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 490px;
+  border-radius: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.mailForm :local h3 {
+  margin-bottom: 20px;
+  margin-top: 50px;
+  font-size: 22px;
+  font-family: "MICEGothic Bold";
+  letter-spacing: 2px;
+}
+.mailIcon {
+  margin-right: 12px;
+}
+.mailDiv {
+  margin-bottom: 20px;
+}
+.mailDiv :local label {
+  margin-left: 5px;
+  font-size: 15px;
+  font-family: "Pretendard-Regular";
+}
+.mail {
+  height: 20px;
+  border: none;
+  font-size: 15px;
+  font-size: 15px;
+  font-family: "Pretendard-Regular";
+  letter-spacing: 2px;
+}
+.mailContent {
+  height: 200px;
+  padding: 15px;
+  font-size: 13px;
+  font-family: "Pretendard-Regular";
+  font-weight: 400;
+}
+.mailBtn {
+  width: 95px;
+  height: 45px;
+  font-size: 13px;
+  font-family: "MICEGothic Bold";
+  margin-top: 40px;
+  margin-left: 150px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border: 0px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.table {
+  /*text-align: center;*/
+  border-collapse: collapse;
+  margin: 30px auto;
+}
+.table th {
+  font-size: 13px;
+  width: 140px;
+  line-height: 5;
+  padding: 3px;
+  background-color: rgba(240, 240, 240, 0.832);
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-family: "Pretendard-Regular";
+}
+
+.table td {
+  width: 320px;
+  line-height: 5;
+  padding: 0px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+/*나의 가족 신청 현황 td*/
+.td {
+  padding-left: 18px;
+  font-size: 13px;
+  font-family: "Pretendard-Regular";
+}
+.input {
+  margin-left: 20px;
+  height: 40px;
+  font-size: 12px;
+  padding-left: 7px;
+  font-family: "Pretendard-Regular";
+}
+.select_sex {
+  margin-left: 20px;
+  height: 40px;
+  width: 60px;
+  text-align: center;
+  font-family: "Pretendard-Regular";
+}
+.select {
+  margin-left: 20px;
+  height: 40px;
+  width: 120px;
+  text-align: center;
+  font-family: "Pretendard-Regular";
+}
+.option {
+}
+.submitBtn {
+  width: 95px;
+  height: 45px;
+  font-size: 13px;
+  font-family: "MICEGothic Bold";
+  margin-top: 0px;
+  margin-bottom: 8px;
+  margin-left: 280px;
+  background-color: rgb(141, 124, 252);
+  color: white;
+  border: 0px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.submitBtn:hover {
+  background-color: rgb(67, 38, 182);
+}
+.goToHomeBtn:hover {
+  background-color: rgb(67, 38, 182);
+}
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.ul {
+  padding-left: 18px;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  margin: 0px;
+}
+.li {
+  list-style: none;
+  margin-right: 7px;
+  text-align: center;
+  font-family: "Pretendard-Regular";
+  font-size: 13px;
+}
+.ul_mail {
+  padding-left: 20px;
+  margin: 5px 0px 5px 0px;
+  height: auto;
+}
+.li_mail {
+  list-style: none;
+  font-family: "Pretendard-Regular";
+  font-size: 12px;
+  line-height: 25px;
+}
+.OorX {
+  font-size: 15px;
+  margin-left: 3px;
+}
+.noFmy {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  text-align: center;
+  margin: 100px auto;
+}
+.noFmyIcon {
+  position: absolute;
+  top: 2px;
+  left: 11px;
+  font-size: 25px;
+  color: rgba(210, 54, 54, 0.792);
+}
+.noFmyText {
+  font-size: 23px;
+  font-family: "Pretendard-Regular";
+  font-weight: 500;
+}

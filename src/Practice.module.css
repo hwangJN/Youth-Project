@@ -1,0 +1,27 @@
+.body {
+  margin: 10px;
+}
+.title {
+  text-align: center;
+  border-bottom: solid gray 4px;
+  margin: 0px;
+  padding: 30px;
+}
+.grid {
+  border: 5px solid pink;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  padding: 10px;
+}
+/*위 아래 순서 바 꾸면 실행 안됨 */
+@media (max-width: 800px) {
+  .grid {
+    display: block;
+  }
+}
+
+.div {
+  border: 5px solid rgb(177, 28, 28);
+  margin: 0px;
+  padding: 20px;
+}

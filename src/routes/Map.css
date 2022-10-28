@@ -1,0 +1,263 @@
+@font-face {
+  font-family: "scdream4";
+  src: url("../fonts/SCDream4.otf");
+}
+@font-face {
+  font-family: "scdream2";
+  src: url("../fonts/SCDream7.otf");
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MICEGothic Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GongGothicMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.container {
+  padding-top: 90px;
+  /*
+  background-color: rgba(141, 132, 172, 0.947);
+
+  background-color: rgba(210, 150, 131, 0.642);
+  background-color: rgba(71, 153, 220, 0.419);
+  background-color: rgba(146, 193, 255, 0.36);
+  */
+  background-image: url("../img/배경6.png");
+  background-size: contain;
+  height: 1000px;
+}
+.seoulmap {
+  height: 660px;
+  width: 830px;
+  margin: 0 auto;
+  background-image: url("../img/서울지도.png");
+  position: relative;
+  /*background: url("../img/mapSeoul_photo.png") no-repeat center;*/
+}
+.text {
+  position: absolute;
+  display: inline-block;
+  top: 15px;
+  left: 36px;
+}
+.mapIcon {
+  margin-right: 19px;
+  font-size: 25px;
+  position: absolute;
+  display: inline-block;
+  top: 45px;
+  left: 0px;
+}
+.applyBtn {
+  font-family: "Pretendard-Regular";
+  position: absolute;
+  top: 40px;
+  left: 240px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  width: 75px;
+  height: 38px;
+  font-size: 12px;
+  border: 0px solid rgba(0, 0, 0, 0.389);
+  background-color: rgba(241, 105, 26, 0.64);
+  border-radius: 2px;
+}
+.applyBtn:hover {
+  cursor: pointer;
+  background-color: rgba(241, 105, 26, 0.673);
+}
+.title_h3 {
+  font-family: "MICEGothic Bold";
+  color: rgba(31, 31, 31, 0.938);
+  font-size: 27px;
+  margin-bottom: 19px;
+  margin-left: 1px;
+  width: 230px;
+  /*
+  border-bottom: rgba(0, 0, 0, 0.979) 1px groove;*/
+  padding-bottom: 7px;
+}
+.seoul {
+  color: rgba(52, 52, 52, 0.756);
+  margin-left: 100px;
+  margin-top: 65px;
+  font-family: "MICEGothic Bold";
+  display: inline-block;
+}
+.jungro,
+.seodaemun,
+.gangnam,
+.gangdong,
+.gangbuk,
+.gangseo,
+.gwanak,
+.gawngjin,
+.guro,
+.geumcheon,
+.nowon,
+.dobong,
+.dongdaemun,
+.dongjak,
+.mapo,
+.seocho,
+.seongdong,
+.seongbuk,
+.songfa,
+.yangcheon,
+.yeongdeungpo,
+.youngsan,
+.eunpyeong,
+.jung,
+.jungrang {
+  color: rgba(0, 0, 0, 0.558);
+  position: absolute;
+  font-size: 13px;
+  font-family: "GongGothicMedium";
+  font-weight: 500;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+}
+.jungro:hover,
+.seodaemun:hover,
+.gangnam:hover,
+.gangdong:hover,
+.gangbuk:hover,
+.gangseo:hover,
+.gwanak:hover,
+.gawngjin:hover,
+.guro:hover,
+.geumcheon:hover,
+.nowon:hover,
+.dobong:hover,
+.dongdaemun:hover,
+.dongjak:hover,
+.mapo:hover,
+.seocho:hover,
+.seongdong:hover,
+.seongbuk:hover,
+.songfa:hover,
+.yangcheon:hover,
+.yeongdeungpo:hover,
+.youngsan:hover,
+.eunpyeong:hover,
+.jung:hover,
+.jungrang:hover {
+  color: black;
+  font-size: 17px;
+  cursor: pointer;
+}
+.jungro {
+  left: 395px;
+  top: 275px;
+}
+.seodaemun {
+  left: 310px;
+  top: 290px;
+}
+.gangnam {
+  left: 535px;
+  top: 480px;
+}
+.gangdong {
+  right: 80px;
+  top: 355px;
+}
+.gangbuk {
+  left: 460px;
+  top: 155px;
+}
+.gangseo {
+  left: 100px;
+  top: 320px;
+}
+.gwanak {
+  bottom: 100px;
+  left: 330px;
+}
+.gawngjin {
+  right: 190px;
+  bottom: 280px;
+}
+.guro {
+  left: 160px;
+  bottom: 175px;
+}
+.geumcheon {
+  left: 243px;
+  bottom: 92px;
+}
+.nowon {
+  right: 200px;
+  top: 150px;
+}
+.dobong {
+  right: 283px;
+  top: 100px;
+}
+.dongdaemun {
+  right: 240px;
+  top: 280px;
+}
+.dongjak {
+  bottom: 188px;
+  left: 330px;
+}
+.mapo {
+  top: 340px;
+  left: 280px;
+}
+.seocho {
+  left: 449px;
+  top: 500px;
+}
+.seongdong {
+  right: 273px;
+  top: 350px;
+}
+
+.seongbuk {
+  right: 305px;
+  top: 243px;
+}
+.songfa {
+  right: 145px;
+  bottom: 190px;
+}
+.yangcheon {
+  left: 160px;
+  bottom: 230px;
+}
+.yeongdeungpo {
+  left: 247px;
+  bottom: 220px;
+}
+.youngsan {
+  left: 395px;
+  bottom: 252px;
+}
+.eunpyeong {
+  left: 305px;
+  top: 195px;
+}
+.jung {
+  left: 427px;
+  top: 329px;
+}
+.jungrang {
+  right: 170px;
+  bottom: 390px;
+}

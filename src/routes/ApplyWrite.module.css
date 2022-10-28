@@ -1,0 +1,137 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MICEGothic Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+.container {
+  background-color: antiquewhite;
+  padding-top: 130px;
+  height: 630px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 550px;
+  margin: 0px auto;
+  padding: 30px 50px 30px 50px;
+
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+}
+.icon {
+  position: absolute;
+  top: 48px;
+  left: 27px;
+  font-size: 20px;
+  color: rgb(62, 46, 132);
+}
+.title {
+  font-family: "MICEGothic Bold";
+  font-weight: 800;
+  font-size: 26px;
+  text-align: left;
+  margin: 10px 0px 30px 8px;
+}
+.underLine {
+  position: absolute;
+  top: 65px;
+  left: 42px;
+  width: 180px;
+}
+.formTitle {
+  margin-top: 25px;
+  font-family: "Pretendard-Regular";
+  padding-left: 10px;
+  font-size: 15px;
+  display: block;
+  height: 40px;
+  width: 500px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+.formContent {
+  font-family: "Pretendard-Regular";
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-top: 10px;
+  display: block;
+  height: 130px;
+  width: 500px;
+  border-radius: 5px;
+}
+.option {
+  margin-top: 20px;
+  display: flex;
+  height: 250px;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.label {
+  padding-right: 20px;
+  margin-right: 20px;
+  font-size: 15px;
+  font-family: "Pretendard-Regular";
+  border-right: 1px rgba(0, 0, 0, 0.347) solid;
+}
+.region,
+.numOf,
+.adult {
+  width: 350px;
+  border-bottom: 1px dotted black;
+  padding: 10px 0px 18px 0px;
+}
+
+.select {
+  font-family: "Pretendard-Regular";
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.select2 {
+  font-family: "Pretendard-Regular";
+  height: 30px;
+  width: 60px;
+  text-align: center;
+  font-size: 13px;
+  margin-right: 10px;
+}
+.applyBtn {
+  margin-top: 20px;
+  color: white;
+  width: 250px;
+  height: 48px;
+  font-size: 15px;
+  border: 0px;
+  background-color: blueviolet;
+  margin-left: 130px;
+  border-radius: 5px;
+  font-family: "Pretendard-Regular";
+}
+.applyBtn:hover {
+  cursor: pointer;
+}
+.errorDiv {
+  margin-top: 10px;
+  text-align: center;
+}
+.errorDiv :local span {
+  font-family: "MICEGothic Bold";
+  font-size: 13px;
+  color: rgba(173, 22, 22, 0.858);
+}

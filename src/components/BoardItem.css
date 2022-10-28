@@ -1,0 +1,240 @@
+.boarditem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.btnItems {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+  padding-left: 30px;
+}
+
+.btnItems button {
+  padding: 8px 15px;
+  border: 1px solid;
+  border-radius: 5px;
+  border: 1px solid rgb(240, 240, 240);
+}
+
+.btnItems button:last-child {
+  margin-left: 8px;
+}
+
+.btnItems button:hover {
+  cursor: pointer;
+}
+
+.item {
+  border: 1px solid rgba(125, 125, 125, 0.2);
+  border-radius: 5px;
+  padding: 10px 15px;
+  padding-bottom: 30px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.itemTitle {
+  margin-bottom: 12px;
+}
+
+.itemDetail {
+  color: rgba(125, 125, 125, 0.8);
+  font-size: 13px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(125, 125, 125, 0.3);
+}
+
+.itemContent {
+  display: inline-block;
+  font-size: 15px;
+  margin-bottom: 35px;
+}
+
+.itemInfo {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(125, 125, 125, 0.3);
+}
+
+.itemIcon {
+  margin-right: 5px;
+}
+
+.itemShare {
+  margin-right: 10px;
+  padding-right: 8px;
+  border-right: 1px solid rgba(125, 125, 125, 0.7);
+}
+
+.itemLink {
+  color: black;
+  text-decoration: none;
+}
+
+.formBtns button {
+  height: 50%;
+  padding: 8px 20px;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 8px;
+  background-color: rgb(240, 240, 240);
+  color: rgb(255, 103, 80);
+  font-weight: 600;
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+.formBtns button:hover {
+  cursor: pointer;
+}
+
+.commentBox > span {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.commentForm {
+  width: 100%;
+  border: 2px solid rgba(125, 125, 125, 0.3);
+  border-radius: 5px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.commentForm textarea {
+  width: 90%;
+  height: 80px;
+  border: none;
+  resize: none;
+  outline: none;
+}
+
+.commentForm input {
+  width: 50px;
+  padding: 10px;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 8px;
+  background-color: rgb(240, 240, 240);
+  color: rgb(255, 103, 80);
+  font-weight: 600;
+}
+
+.commentForm input:hover {
+  cursor: pointer;
+}
+
+.advertisement {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  height: 90px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: linear-gradient(to right, purple, darkviolet);
+}
+
+.advIntro {
+  display: flex;
+  flex-direction: column;
+}
+
+.advIntro h1 {
+  font-size: 25px;
+  color: white;
+  margin: 0;
+}
+
+.advIntro span {
+  color: black;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+@media (max-width: 920px) {
+  .advIntro h1 {
+    font-size: 18px;
+  }
+  .advIntro span {
+    font-size: 12px;
+  }
+}
+
+.advertisement .couchIcon {
+  font-size: 50px;
+  margin-left: 20px;
+  color: orange;
+}
+
+.commentItems {
+  margin-top: 50px;
+  border-top: 1px solid rgba(125, 125, 125, 0.3);
+}
+
+.commentItem {
+  border-bottom: 1px solid rgba(125, 125, 125, 0.3);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.commentWriter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.writerProfile {
+  display: flex;
+  align-items: center;
+}
+
+.writerProfile span {
+  font-weight: 600;
+}
+
+.userIconWrap {
+  background-color: rgba(125, 125, 125, 0.3);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.commentWriter button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(125, 125, 125, 0.2);
+  border-radius: 50%;
+}
+
+.commentWriter button:hover {
+  cursor: pointer;
+}
+
+.commentDate {
+  display: inline-block;
+  margin-top: 3px;
+  color: rgba(125, 125, 125, 0.6);
+  font-size: 13px;
+}

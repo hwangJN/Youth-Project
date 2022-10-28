@@ -1,0 +1,268 @@
+@font-face {
+  font-family: "scdream";
+  src: url("../fonts/SCDream7.otf");
+}
+@font-face {
+  font-family: "scdream5";
+  src: url("../fonts/SCDream5.otf");
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MICEGothic Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "RIDIBatang";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Happiness-Sans-Title";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+.welfareDept {
+  line-height: 30px;
+}
+.mainHeader {
+  width: 100%;
+  height: 200px;
+  padding-top: 18vh;
+  background: url("../img/together.jpg") no-repeat left;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+.mainHeader h1,
+.mainHeader select {
+  margin-right: 10%;
+}
+
+.mainHeader h1 {
+  color: white;
+  font-size: 40px;
+  font-family: "MICEGothic Bold";
+}
+
+.mainHeader select {
+  padding: 8px;
+  border: 2px solid white;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+  font-family: "Pretendard-Regular";
+  width: 180px;
+  height: 42px;
+  text-align: center;
+}
+
+.mainHeader select:focus {
+  box-shadow: 0 0 5px 2px rgb(255, 215, 105);
+  outline-width: 0px;
+}
+
+.program {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.programList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  position: relative;
+}
+
+.programList:last-child {
+  margin-bottom: 80px;
+}
+.programNameIcon {
+  margin-right: 3px;
+  color: rgb(231, 168, 52);
+}
+.programName {
+  font-family: "MICEGothic Bold";
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  font-size: 23px;
+  padding: 15px 0px;
+}
+
+.programItems {
+  display: flex;
+  align-items: center;
+}
+
+.programItem {
+  position: relative;
+  width: 260px;
+  height: 310px;
+  text-align: center;
+  margin: 8px;
+  border: 1px solid rgba(125, 125, 125, 0.2);
+}
+
+.programItem img {
+  margin-bottom: 10px;
+}
+
+.programItem h3 {
+  font-family: "Happiness-Sans-Title";
+  color: rgb(75, 71, 111);
+  font-size: 18px;
+}
+
+.programDate {
+  font-size: 12px;
+  font-family: "Pretendard-Regular";
+  color: rgb(125, 125, 125);
+}
+
+.programHover {
+  display: none;
+}
+
+.slick-slide div:hover .programHover {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 310px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  background-color: rgba(0, 0, 0, 0.056);
+}
+
+@media (max-width: 864px) {
+  .slick-slider {
+    width: 555px;
+  }
+}
+
+.slick-list {
+  width: 850px;
+  height: 370px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.slick-slide div {
+  width: 260px;
+}
+
+.slick-slider {
+  display: flex;
+}
+
+.slick-track {
+  display: flex;
+  height: 100%;
+}
+
+.slick-arrow {
+  padding: 4px 10px;
+  color: white;
+  background-color: dimgray;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid dimgray;
+  border-radius: 50%;
+}
+
+.slick-prev {
+  cursor: pointer;
+  z-index: 2;
+  position: absolute;
+  top: 230px;
+  left: 0;
+}
+
+.slick-next {
+  cursor: pointer;
+  z-index: 2;
+  position: absolute;
+  top: 230px;
+  right: 0;
+}
+
+.welfare {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 50px auto;
+}
+
+.welfareItem {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 380px;
+  height: 470px;
+  margin: 15px;
+  margin-bottom: 80px;
+  background-color: #f2f3f7;
+  padding: 30px;
+  padding-top: 60px;
+  box-sizing: border-box;
+  border: 1px solid #f2f3f7;
+  border-radius: 20px;
+  position: relative;
+  font-family: "MICEGothic Bold";
+}
+
+.welfareTitle {
+  font-size: 25px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.welfareContent {
+  margin: 20px auto;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 28px;
+  font-size: 14px;
+  padding: 8px;
+}
+
+.welfareDetail {
+  padding-left: 17px;
+  font-family: 600;
+  list-style-position: outside;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.welfareSub {
+  margin-bottom: 15px;
+  font-family: 600;
+}
+
+.welfareIcon {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  font-size: 40px;
+  color: #ffa64d;
+}
+.program_select {
+}

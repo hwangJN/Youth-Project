@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "scdream5";
+  src: url("../fonts/SCDream5.otf");
+}
+.container {
+  padding-top: 240px;
+  height: 650px;
+  background-color: antiquewhite;
+}
+.span {
+  font-size: 40px;
+  display: block;
+  width: 700px;
+  margin: 0px auto;
+  text-align: center;
+  font-family: "scdream5";
+}
