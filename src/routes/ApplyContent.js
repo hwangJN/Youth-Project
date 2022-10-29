@@ -52,7 +52,6 @@ const ApplyContent = ({ userObj }) => {
     const docSnap = await getDoc(applyObjRef);
     if (docSnap.exists()) {
       setSeoulGu(docSnap.data().seoulGu);
-
       const collection_applyList = docSnap.data().applyList;
       collection_applyList.map((item) => {
         if (item === nickName) {
@@ -65,7 +64,6 @@ const ApplyContent = ({ userObj }) => {
         setApplyList([...collection_applyList, nickName]);
         setApplyListEmail([...collection_applyList_emails, userObj.email]);
       }
-
       if (docSnap.data().needAdult) setNeedAdult(true);
       if (docSnap.data().restOfFmy === 0) setFormFull(true);
       setFormId(docSnap.data().applyerId);

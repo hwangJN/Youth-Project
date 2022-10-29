@@ -53,6 +53,7 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
   const form = useRef();
   let applyerEmailString = "";
   const [message, setMessage] = useState("");
+  const [deliver, setDeliver] = useState(false);
 
   useEffect(() => {
     const getUser = async () => {
@@ -182,8 +183,6 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    console.log("?");
-    console.log(form.current);
     emailjs
       .sendForm(
         "service_uxhhzfm",
@@ -199,6 +198,7 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
           console.log(error.text);
         }
       );
+    setDeliver(true);
   };
   return (
     <div className={styles.container}>
@@ -493,6 +493,11 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
             onChange={onChange}
           />
           <input type="submit" value="메일 전송" className={styles.mailBtn} />
+          {deliver ? (
+            <div className={styles.deliver}>
+              <span>전송 완료</span>
+            </div>
+          ) : null}
         </form>
       ) : null}
     </div>
