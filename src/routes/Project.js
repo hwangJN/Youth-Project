@@ -86,20 +86,22 @@ const Program = () => {
 
 const Welfare = () => {
   return (
-    <div className="welfare">
-      {welfareItem.map((item, index) => {
-        return (
-          <div key={index} className="welfareItem">
-            <FontAwesomeIcon icon={faBookmark} className="welfareIcon" />
-            <h1 className="welfareTitle">{item.title}</h1>
-            <span className="welfareContent">{item.content}</span>
-            <ul className="welfareDetail">
-              <li className="welfareSub">지원대상: {item.subject}</li>
-              <li className="welfareDept">신청방법: {item.dept}</li>
-            </ul>
-          </div>
-        );
-      })}
+    <div className="welfareWrap">
+      <div className="welfare">
+        {welfareItem.map((item, index) => {
+          return (
+            <div key={index} className="welfareItem">
+              <FontAwesomeIcon icon={faBookmark} className="welfareIcon" />
+              <h1 className="welfareTitle">{item.title}</h1>
+              <span className="welfareContent">{item.content}</span>
+              <ul className="welfareDetail">
+                <li className="welfareSub">지원대상: {item.subject}</li>
+                <li className="welfareDept">신청방법: {item.dept}</li>
+              </ul>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

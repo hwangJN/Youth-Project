@@ -203,8 +203,15 @@
   right: 0;
 }
 
+.welfareWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .welfare {
   display: flex;
+  max-width: 1230px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
