@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Youth-Project/static/css/main.127efb41.css",
-    "main.js": "/Youth-Project/static/js/main.d2b67f71.js",
+    "main.js": "/Youth-Project/static/js/main.fe41edd5.js",
     "static/media/meal.jpg": "/Youth-Project/static/media/meal.61df172061b35cc03e34.jpg",
     "static/media/guitar.jpg": "/Youth-Project/static/media/guitar.420803b8c316140535a1.jpg",
     "static/media/전담어른.jpg": "/Youth-Project/static/media/전담어른.0f4623ea437373a7b15c.jpg",
@@ -50,10 +50,10 @@
     "static/media/메인2.jpg": "/Youth-Project/static/media/메인2.e1c8f9a6ecaf066d9907.jpg",
     "index.html": "/Youth-Project/index.html",
     "main.127efb41.css.map": "/Youth-Project/static/css/main.127efb41.css.map",
-    "main.d2b67f71.js.map": "/Youth-Project/static/js/main.d2b67f71.js.map"
+    "main.fe41edd5.js.map": "/Youth-Project/static/js/main.fe41edd5.js.map"
   },
   "entrypoints": [
     "static/css/main.127efb41.css",
-    "static/js/main.d2b67f71.js"
+    "static/js/main.fe41edd5.js"
   ]
 }
