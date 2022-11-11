@@ -17,7 +17,7 @@ export const ProgramName = [
   },
   { type: " 취미 활동", icon: <FontAwesomeIcon icon={faBookmark} /> },
   {
-    type: " 취업 / 경제 분야",
+    type: " 취업/경제 분야",
     icon: <FontAwesomeIcon icon={faWallet} />,
   },
 ];
