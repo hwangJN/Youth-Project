@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Youth-Project/static/css/main.c36e2d64.css",
-    "main.js": "/Youth-Project/static/js/main.538c15db.js",
+    "main.css": "/Youth-Project/static/css/main.127efb41.css",
+    "main.js": "/Youth-Project/static/js/main.d2b67f71.js",
     "static/media/meal.jpg": "/Youth-Project/static/media/meal.61df172061b35cc03e34.jpg",
     "static/media/guitar.jpg": "/Youth-Project/static/media/guitar.420803b8c316140535a1.jpg",
     "static/media/전담어른.jpg": "/Youth-Project/static/media/전담어른.0f4623ea437373a7b15c.jpg",
@@ -49,11 +49,11 @@
     "static/media/mapSeoul_photo.png": "/Youth-Project/static/media/mapSeoul_photo.67eaa9720dbe246eda02.png",
     "static/media/메인2.jpg": "/Youth-Project/static/media/메인2.e1c8f9a6ecaf066d9907.jpg",
     "index.html": "/Youth-Project/index.html",
-    "main.c36e2d64.css.map": "/Youth-Project/static/css/main.c36e2d64.css.map",
-    "main.538c15db.js.map": "/Youth-Project/static/js/main.538c15db.js.map"
+    "main.127efb41.css.map": "/Youth-Project/static/css/main.127efb41.css.map",
+    "main.d2b67f71.js.map": "/Youth-Project/static/js/main.d2b67f71.js.map"
   },
   "entrypoints": [
-    "static/css/main.c36e2d64.css",
-    "static/js/main.538c15db.js"
+    "static/css/main.127efb41.css",
+    "static/js/main.d2b67f71.js"
   ]
 }
