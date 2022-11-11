@@ -25,8 +25,11 @@ const Apply = ({ isLoggedIn, userObj }) => {
   const fmyref = collection(dbService, "Family");
   //console.log(seoulGu);
 
+  let sGu = "강남구";
   const location = useLocation();
-  const sGu = location.state.sGu;
+  if (location.state) {
+    sGu = location.state.sGu;
+  }
 
   const q = query(
     fmyref,
