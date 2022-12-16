@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  BrowserRouter,
   HashRouter,
 } from "react-router-dom";
 import Home from "../routes/Home";
@@ -38,6 +37,7 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUserObj }) => {
         <Route exact path="/">
           <Home userObj={userObj} />
         </Route>
+
         <Route exact path="/login">
           <Login userObj={userObj} refreshUserObj={refreshUserObj} />
         </Route>

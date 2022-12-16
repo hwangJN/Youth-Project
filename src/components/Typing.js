@@ -32,6 +32,8 @@ const Typing = ({ text, text2, speed, fontSize = "1em", color = "black" }) => {
           return text.slice(0, Text.length + 1);
         });
       }, speed);
+
+      //첫번째 줄 다 쳤을때
       if (text.length === Text.length) {
         clearInterval(interval);
         // 첫번째 텍스트가 다 채워진 다음 두번째 텍스트 입력
@@ -45,12 +47,16 @@ const Typing = ({ text, text2, speed, fontSize = "1em", color = "black" }) => {
         }
         return () => clearInterval(interval2);
       }
-      return () => clearInterval(interval);
+
+      //언마운트 / 한글자 나올때마다 setInterval 멈춤
+      return () => {
+        clearInterval(interval);
+      };
     } else {
       setText("");
       setText2("");
     }
-  }, [Text.length, Text2.length, speed, text, text2, y]);
+  }); // , [Text.length, Text2.length, speed, text, text2, y] 를 적은 이유는 뭘까? 없어도 실행 화면이 같음.
 
   return (
     <h2>
