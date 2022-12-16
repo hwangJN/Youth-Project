@@ -32,7 +32,6 @@ function App() {
   const refreshUserObj = async () => {
     const user = await authService.currentUser;
     if (user) {
-      console.log(user);
       setUserObj({
         email: user.email,
         displayName: user.displayName,

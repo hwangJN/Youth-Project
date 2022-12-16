@@ -23,6 +23,7 @@ import emailjs from "@emailjs/browser";
 
 function ProfileUpdate({ userObj, refreshUserObj }) {
   const history = useHistory();
+
   //프로필
   const [newDisplayName, setNewDisplayName] = useState("");
   const [age, setAge] = useState("");
@@ -51,7 +52,7 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
   //const [isAdult, setIsAdult] = useState(false); //폼 작성자인지 아닌지(취소 여부)
 
   const form = useRef();
-  let applyerEmailString = "";
+  // applyerEmailString = "";
   const [message, setMessage] = useState("");
   const [deliver, setDeliver] = useState(false);
 
@@ -102,8 +103,8 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
     };
     getUser();
   }, []);
-  applyerEmailString = JSON.stringify(applyerEmail);
-  console.log(applyerEmailString);
+  //applyerEmailString = JSON.stringify(applyerEmail);
+  //console.log(applyerEmailString);
   const onChange = (event) => {
     const {
       target: { name, value },
@@ -199,6 +200,8 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
         }
       );
     setDeliver(true);
+    alert("메일을 전송하였습니다.");
+    //window.location.replace("/profile");
   };
   return (
     <div className={styles.container}>
@@ -301,205 +304,215 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
           <input type="submit" value="수정하기" className={styles.submitBtn} />
         </form>
       ) : (
-        <div className={styles.form}>
-          {/* 신청 내역이 있을 경우 or 없을 경우 */}
-          {!loading && existForm && (
-            <>
-              <div className={styles.titleDiv}>
-                <img
-                  src={require(`../img/인덱스3.png`)}
-                  className={styles.index}
-                />
-                <span className={styles.h1}> 나의 가족 신청</span>
-                <button
-                  className={styles.gotoProfileBtn}
-                  onClick={() => {
-                    setMyFmyBtn((prev) => !prev);
-                  }}
-                >
-                  프로필
-                </button>
-              </div>
+        <div className={styles.fmyAndEmail}>
+          <div className={styles.form}>
+            {/* 신청 내역이 있을 경우 or 없을 경우 */}
+            {/* 신청 내역이 있을 때 */}
+            {!loading && existForm && (
+              <>
+                <div className={styles.titleDiv}>
+                  <img
+                    src={require(`../img/인덱스3.png`)}
+                    className={styles.index}
+                  />
+                  <span className={styles.h1}> 나의 가족 신청</span>
+                  <button
+                    className={styles.gotoProfileBtn}
+                    onClick={() => {
+                      setMyFmyBtn((prev) => !prev);
+                    }}
+                  >
+                    프로필
+                  </button>
+                </div>
 
-              <form>
-                <table className={styles.table}>
-                  <tbody>
-                    <tr>
-                      <th>지역</th>
-                      <td>
-                        <span className={styles.td}>
-                          서울특별시 {seoulGu} {seoulDong}
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>인원수</th>
-                      <td>
-                        <span className={styles.td}>{numofFmy}명</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>현재 가족</th>
-                      <td>
-                        <ul className={styles.ul}>
-                          {applyer.map((nickName, idx) => {
-                            return (
-                              <li className={styles.li} key={idx}>
-                                {nickName}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>가족 이메일</th>
-                      <td>
-                        <ul className={styles.ul_mail}>
-                          {applyerEmail.map((mail, idx) => {
-                            return (
-                              <li className={styles.li_mail} key={idx}>
-                                {mail}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <th>전담어른 여부</th>
-                      <td>
-                        <span className={styles.td}>
-                          {needAdult ? (
-                            <>
-                              <FontAwesomeIcon
-                                className={styles.OorX}
-                                icon={faCircle}
-                              />
-                            </>
-                          ) : (
-                            <>
-                              <FontAwesomeIcon
-                                className={styles.OorX}
-                                icon={faX}
-                              />
-                            </>
-                          )}
-                          <span className={styles.adultName}>
-                            {needAdult ? <span>{adultNickname}</span> : null}
+                <form>
+                  <table className={styles.table}>
+                    <tbody>
+                      <tr>
+                        <th>지역</th>
+                        <td>
+                          <span className={styles.td}>
+                            서울특별시 {seoulGu} {seoulDong}
                           </span>
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>가족 결성 여부</th>
-                      <td>
-                        <span className={styles.td}>
-                          {complete ? (
-                            <>
-                              <FontAwesomeIcon
-                                className={styles.OorX}
-                                icon={faCircle}
-                              />
-                            </>
-                          ) : (
-                            <>
-                              <FontAwesomeIcon
-                                className={styles.OorX}
-                                icon={faX}
-                              />
-                            </>
-                          )}
-                        </span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                {/* 폼 작성자가 아닌 경우 취소하기 */}
-                {!isApplyer ? (
-                  <>
-                    {!complete ? (
-                      <button
-                        className={styles.submitBtn}
-                        onClick={cancelApply}
-                      >
-                        취소하기
-                      </button>
-                    ) : null}
-                  </>
-                ) : null}
-                {/* 메일전송버튼 */}
-              </form>
-            </>
-          )}
-          {!loading && !existForm && (
-            <>
-              <div className={styles.noFmy}>
-                <FontAwesomeIcon
-                  className={styles.noFmyIcon}
-                  icon={faCircleExclamation}
-                />
-                <h3 className={styles.noFmyText}>신청한 가족이 없습니다</h3>
-                <button
-                  className={styles.gotoProfileBtn_2}
-                  onClick={() => {
-                    setMyFmyBtn((prev) => !prev);
-                  }}
-                >
-                  프로필
-                </button>
-              </div>
-            </>
-          )}
-          {loading && (
-            <>
-              <div className={styles.noFmy}>
-                <h1>Loading..</h1>
-              </div>
-            </>
-          )}
-        </div>
-      )}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>인원수</th>
+                        <td>
+                          <span className={styles.td}>{numofFmy}명</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>현재 가족</th>
+                        <td>
+                          <ul className={styles.ul}>
+                            {applyer.map((nickName, idx) => {
+                              return (
+                                <li className={styles.li} key={idx}>
+                                  {nickName}
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>가족 이메일</th>
+                        <td>
+                          <ul className={styles.ul_mail}>
+                            {applyerEmail.map((mail, idx) => {
+                              return (
+                                <li className={styles.li_mail} key={idx}>
+                                  {mail}
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </td>
+                      </tr>
 
-      {complete && myFmyBtn && !(protect === "adult") ? (
-        <form className={styles.mailForm} ref={form} onSubmit={sendEmail}>
-          <h3>
-            <FontAwesomeIcon icon={faEnvelope} className={styles.mailIcon} />
-            {needAdult ? "전담어른" : "팀장"}에게 메일 보내기
-          </h3>
-          <div className={styles.mailDiv}>
-            <label>To. </label>
-            {needAdult ? (
-              <input
-                className={styles.mail}
-                name="toEmail"
-                onChange={() => {}}
-                value={adultEmail}
-              />
-            ) : (
-              <input
-                name="toEmail"
-                onChange={() => {}}
-                value={applyerEmail[0]}
-              />
+                      <tr>
+                        <th>전담어른 여부</th>
+                        <td>
+                          <span className={styles.td}>
+                            {needAdult ? (
+                              <>
+                                <FontAwesomeIcon
+                                  className={styles.OorX}
+                                  icon={faCircle}
+                                />
+                                <span className={styles.adultName}>
+                                  <span>{adultNickname}</span>
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                <FontAwesomeIcon
+                                  className={styles.OorX}
+                                  icon={faX}
+                                />
+                              </>
+                            )}
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>가족 결성 여부</th>
+                        <td>
+                          <span className={styles.td}>
+                            {complete ? (
+                              <>
+                                <FontAwesomeIcon
+                                  className={styles.OorX}
+                                  icon={faCircle}
+                                />
+                              </>
+                            ) : (
+                              <>
+                                <FontAwesomeIcon
+                                  className={styles.OorX}
+                                  icon={faX}
+                                />
+                              </>
+                            )}
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  {/* 폼 작성자가 아닌 경우 취소하기 */}
+                  {!isApplyer ? (
+                    <>
+                      {!complete ? (
+                        <button
+                          className={styles.submitBtn}
+                          onClick={cancelApply}
+                        >
+                          취소하기
+                        </button>
+                      ) : null}
+                    </>
+                  ) : null}
+                  {/* 메일전송버튼 */}
+                </form>
+              </>
+            )}
+            {/* 신청한 가족이 없을 때 */}
+            {!loading && !existForm && (
+              <>
+                <div className={styles.noFmy}>
+                  <FontAwesomeIcon
+                    className={styles.noFmyIcon}
+                    icon={faCircleExclamation}
+                  />
+                  <h3 className={styles.noFmyText}>신청한 가족이 없습니다</h3>
+                  <button
+                    className={styles.gotoProfileBtn_2}
+                    onClick={() => {
+                      setMyFmyBtn((prev) => !prev);
+                    }}
+                  >
+                    프로필
+                  </button>
+                </div>
+              </>
+            )}
+            {/* 로딩중 */}
+            {loading && (
+              <>
+                <div className={styles.noFmy}>
+                  <h1>Loading..</h1>
+                </div>
+              </>
             )}
           </div>
-          <textarea
-            className={styles.mailContent}
-            placeholder="메일 내용을 입력하세요"
-            name="message"
-            value={message}
-            onChange={onChange}
-          />
-          <input type="submit" value="메일 전송" className={styles.mailBtn} />
-          {deliver ? (
-            <div className={styles.deliver}>
-              <span>전송 완료</span>
-            </div>
+          {complete && myFmyBtn && !(protect === "adult") ? (
+            <form className={styles.mailForm} ref={form} onSubmit={sendEmail}>
+              <h3>
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className={styles.mailIcon}
+                />
+                {needAdult ? "전담어른" : "팀장"}에게 메일 보내기
+              </h3>
+              <div className={styles.mailDiv}>
+                <label>To. </label>
+                {needAdult ? (
+                  <input
+                    className={styles.mail}
+                    name="toEmail"
+                    value={adultEmail}
+                  />
+                ) : (
+                  <input name="toEmail" value={applyerEmail[0]} />
+                )}
+              </div>
+              <textarea
+                className={styles.mailContent}
+                placeholder="메일 내용을 입력하세요"
+                name="message"
+                value={message}
+                required
+                onChange={onChange}
+              />
+              <div className={styles.mailBtnDiv}>
+                <input
+                  type="submit"
+                  value="메일 전송"
+                  className={styles.mailBtn}
+                />
+              </div>
+
+              {deliver && (
+                <div className={styles.deliver}>
+                  <span>전송 완료</span>
+                </div>
+              )}
+            </form>
           ) : null}
-        </form>
-      ) : null}
+        </div>
+      )}
     </div>
   );
 }
