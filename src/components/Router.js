@@ -8,13 +8,12 @@ import {
 import Home from "../routes/Home";
 import Navigation from "./Navigation";
 import Community from "../routes/Community";
-import Info from "../routes/Info";
-//import Family from "../routes/Apply";
+
 import Project from "../routes/Project";
 import Login from "../routes/Login";
 import Signin from "../routes/Signin";
 import Profile from "../routes/Profile";
-//import ProfileComplete from "../routes/ProfileComplete";
+
 import Apply from "../routes/Apply";
 import ApplyWrite from "../routes/ApplyWrite";
 import ApplyComplete from "../routes/ApplyComplete";
@@ -22,7 +21,7 @@ import ApplyContent from "../routes/ApplyContent";
 import Map from "../routes/Map";
 import Board from "./Board";
 import CommunityWriting from "../routes/CommunityWriting";
-import Intro from "./Intro";
+import Intro from "../routes/Intro";
 import Footer from "./Footer";
 
 const AppRouter = ({ isLoggedIn, userObj, refreshUserObj }) => {
@@ -44,11 +43,11 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUserObj }) => {
         <Route exact path="/signin">
           <Signin userObj={userObj} refreshUserObj={refreshUserObj} />
         </Route>
+        <Route exact path="/profile">
+          <Profile userObj={userObj} refreshUserObj={refreshUserObj} />
+        </Route>
         <Route exact path="/intro">
           <Intro />
-        </Route>
-        <Route exact path="/info">
-          <Info />
         </Route>
 
         <Route exact path="/community">
@@ -75,14 +74,11 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUserObj }) => {
         <Route exact path="/map">
           <Map isLoggedIn={isLoggedIn} userObj={userObj} />
         </Route>
+        <Route exact path="/program">
+          <Project />
+        </Route>
       </Switch>
 
-      <Route exact path="/program">
-        <Project />
-      </Route>
-      <Route exact path="/profile">
-        <Profile userObj={userObj} refreshUserObj={refreshUserObj} />
-      </Route>
       <Footer />
     </HashRouter>
   );
