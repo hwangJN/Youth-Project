@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styles from "./Authform.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
@@ -13,9 +13,8 @@ import {
 const AuthForm = ({ value, refreshUserObj }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, SetError] = useState("");
   const history = useHistory();
-  const [state, setState] = useState("");
+  const [state, setState] = useState(""); // formSubmit 후 상태
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -33,7 +32,6 @@ const AuthForm = ({ value, refreshUserObj }) => {
         });
       }
     } catch (error) {
-      SetError(error.message);
       if (value === "Signin") {
         setState("이미 존재하는 회원이거나 존재하지 않는 메일입니다.");
       } else if (value === "Login") {
@@ -47,7 +45,7 @@ const AuthForm = ({ value, refreshUserObj }) => {
     if (value === "Login") {
       history.push({
         pathname: "/",
-        state: { id: userId },
+        //state: { id: userId },
       });
     } else if (value === "Signin") {
       history.push({
@@ -71,6 +69,7 @@ const AuthForm = ({ value, refreshUserObj }) => {
   return (
     <>
       <div className={styles.container}>
+        {/* shortTextInfo */}
         <div className={styles.loginSide}>
           <h1 className={styles.loginSideTitle}>
             <FontAwesomeIcon icon={faHouse} className={styles.homeIcon} />
@@ -82,9 +81,11 @@ const AuthForm = ({ value, refreshUserObj }) => {
           </span>
         </div>
         <form onSubmit={onSubmit} className={styles.form}>
+          {/* formTitle */}
           <h2 className={styles.logintitle}>
             {value === "Login" ? "로그인" : "회원가입"}
           </h2>
+          {/* Input */}
           <h4 className={styles.label}>이메일</h4>
           <input
             name="email"
@@ -105,6 +106,7 @@ const AuthForm = ({ value, refreshUserObj }) => {
             required
             className={styles.input}
           />
+          {/* submitBtn */}
           <div className={styles.rowBtn}>
             <input
               type="submit"

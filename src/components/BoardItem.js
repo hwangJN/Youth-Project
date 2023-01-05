@@ -6,17 +6,12 @@ import "./BoardItem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowUpRightFromSquare,
-  faClipboardList,
   faCouch,
-  faDeleteLeft,
-  faPaperPlane,
   faRectangleXmark,
   faShareFromSquare,
   faTableList,
-  faTrash,
   faTrashCan,
   faUser,
-  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 const BoardItem = ({ itemObj, isOwner, userObj }) => {
@@ -24,9 +19,11 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
   const [newTitle, setNewTitle] = useState(itemObj.textTitle);
   const [newContent, setNewContent] = useState(itemObj.textContent);
   const [newComment, setNewComment] = useState("");
-  const boardRef = doc(dbService, "board", `${itemObj.id}`);
+  const boardRef = doc(dbService, "board", `${itemObj.id}`); //해당 id의 게시글 db
   const history = useHistory();
+
   useEffect(() => {
+    //조회수+1
     const onViewsUp = async () => {
       await updateDoc(boardRef, {
         views: itemObj.views + 1,
@@ -34,6 +31,8 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
     };
     onViewsUp();
   }, []);
+
+  //게시글 삭제
   const onDeleteClick = async () => {
     const ok = window.confirm("해당 커뮤니티를 삭제하시겠습니까?", "안내 내용");
     if (ok) {
@@ -41,6 +40,8 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
       history.push("/community");
     }
   };
+
+  //댓글 삭제
   const onDeleteComment = async (event) => {
     event.preventDefault();
     const {
@@ -50,7 +51,10 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
       comments: itemObj.comments.filter((item) => item.now !== Number(name)),
     });
   };
+
   const toggleEditing = () => setEditing((prev) => !prev);
+
+  //수정후 update
   const onSubmit = async (event) => {
     event.preventDefault();
     await updateDoc(boardRef, {
@@ -60,6 +64,8 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
     setEditing(false);
     history.push("/community");
   };
+
+  //댓글 등록
   const onCommentSubmit = async (event) => {
     event.preventDefault();
     const date = new Date();
@@ -81,6 +87,7 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
     });
     setNewComment("");
   };
+
   const onChange = (event) => {
     const {
       target: { name, value },
@@ -93,6 +100,7 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
       setNewComment(value);
     }
   };
+
   return (
     <div className="boarditem">
       {editing ? (
@@ -115,7 +123,6 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
                 value={newTitle}
                 onChange={onChange}
                 type="text"
-                placeholder="글 제목을 입력해주세요"
                 maxLength={50}
                 required
               />
@@ -124,7 +131,6 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
                 value={newContent}
                 onChange={onChange}
                 type="text"
-                placeholder="내용을 작성하세요"
                 maxLength={300}
                 required
               />
@@ -142,7 +148,7 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
           <div className="item">
             <h2 className="itemTitle">{itemObj.textTitle}</h2>
             <span className="itemDetail">
-              {itemObj.date} 조회 {itemObj.views}
+              {itemObj.date} 조회수 {itemObj.views}
             </span>
             <span className="itemContent">{itemObj.textContent}</span>
             <div className="itemInfo">
@@ -171,6 +177,7 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
                 ></textarea>
                 <input type="submit" value="등록" />
               </form>
+
               <div className="advertisement">
                 <div className="advIntro">
                   <h1>For you, 찾아가는 상담소 오픈</h1>
@@ -178,6 +185,7 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
                 </div>
                 <FontAwesomeIcon icon={faCouch} className="couchIcon" />
               </div>
+
               <div className="commentItems">
                 {itemObj.comments.map((item, index) => {
                   return (
@@ -196,6 +204,7 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
                             <span>익명</span>
                           )}
                         </div>
+                        {/*댓글 삭제 - 본인 댓글이면 */}
                         {item.id === userObj.uid && (
                           <form onSubmit={onDeleteComment} name={item.now}>
                             <button type="submit">

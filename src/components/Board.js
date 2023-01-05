@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Board.module.css";
 import { dbService } from "../fbase";
-import {
-  doc,
-  deleteDoc,
-  updateDoc,
-  query,
-  collection,
-  onSnapshot,
-} from "firebase/firestore";
-import { deleteObject, ref } from "firebase/storage";
+import { query, collection, onSnapshot } from "firebase/firestore";
+
 import { useParams } from "react-router-dom";
 import BoardItem from "./BoardItem";
 

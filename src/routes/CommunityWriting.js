@@ -1,5 +1,5 @@
 import "./CommunityWriting.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { dbService } from "../fbase";
 import { addDoc, collection, onSnapshot, query } from "firebase/firestore";
 import { useHistory } from "react-router-dom";

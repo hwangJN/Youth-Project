@@ -6,12 +6,7 @@ import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
-import {
-  faBars,
-  faBarsStaggered,
-  faBookmark,
-  faThumbtack,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
 
 const Community = () => {
   const [board, setBoard] = useState([]);
@@ -54,7 +49,9 @@ const Community = () => {
             .slice(items * (page - 1), items * (page - 1) + items)
             .map((item, index) => (
               <li key={item.id} className="boardListContent">
+                {/* 게시글 번호 */}
                 <span>{board.length - index - items * (page - 1)}</span>
+                {/* 제목 */}
                 <span>
                   <Link to={`/board/${item.id}`}>{item.textTitle}</Link>
                 </span>

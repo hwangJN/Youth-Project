@@ -10,13 +10,16 @@ import { faPeopleRoof } from "@fortawesome/free-solid-svg-icons";
 
 const ApplyWrite = ({ userObj }) => {
   const userObjRef = doc(dbService, "userObj", `${userObj.uid}`);
-  const [seoulGu, setSeoulGu] = useState("강남구");
-  const [seoulDong, setSeoulDong] = useState("-----------");
-  const [formTitle, setFormTitle] = useState("");
-  const [formContent, setFormContent] = useState("");
-  const [needAdult, setNeedAdult] = useState(false);
-  const [numofFmy, setNumofFmy] = useState(2);
-  const [restOfFmy, setRestOfFmy] = useState(1);
+  const [state, setState] = useState({
+    seoulGu: "강남구",
+    seoulDong: "-----------",
+    formTitle: "",
+    formContent: "",
+    needAdult: false,
+    numofFmy: 2,
+    restOfFmy: 1,
+  });
+
   let applyList = [];
   let applyList_email = [];
 
@@ -29,9 +32,15 @@ const ApplyWrite = ({ userObj }) => {
       target: { name, value },
     } = event;
     if (name === "title") {
-      setFormTitle(value);
+      setState({
+        ...state,
+        formTitle: value,
+      });
     } else if (name === "content") {
-      setFormContent(value);
+      setState({
+        ...state,
+        formContent: value,
+      });
     }
   };
   const onSelect = (event) => {
@@ -39,20 +48,29 @@ const ApplyWrite = ({ userObj }) => {
       target: { name, value },
     } = event;
     if (name === "seoul-gu") {
-      setSeoulGu(value);
-      setSeoulDong("-----------");
+      setState({
+        ...state,
+        seoulGu: value,
+        seoulDong: "-----------",
+      });
     } else if (name === "seoul-dong") {
-      setSeoulDong(value);
+      setState({
+        ...state,
+        seoulDong: value,
+      });
     } else if (name === "numOfFamily") {
-      setNumofFmy(value);
-      setRestOfFmy(value - 1);
+      setState({
+        ...state,
+        numofFmy: value,
+        restOfFmy: value - 1,
+      });
     }
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    if (seoulDong !== "-----------") {
+    if (state.seoulDong !== "-----------") {
       await updateDoc(userObjRef, { applyForm: userObj.uid });
       const userObjSnap = await getDoc(userObjRef);
       if (userObjSnap.exists()) {
@@ -60,15 +78,9 @@ const ApplyWrite = ({ userObj }) => {
         applyList_email[0] = userObj.email;
       }
       await setDoc(doc(dbService, "Family", `${userObj.uid}`), {
+        ...state,
         applyerId: userObj.uid,
         createdAt: Date.now(),
-        formTitle,
-        formContent,
-        seoulGu,
-        seoulDong,
-        needAdult,
-        numofFmy,
-        restOfFmy,
         applyList,
         applyList_email,
         complete: false,
@@ -79,15 +91,24 @@ const ApplyWrite = ({ userObj }) => {
     } else {
       setError(true);
     }
-
-    //refreshUserObj();
   };
 
   const goToApplyMain = () => {
-    history.push({ pathname: "/apply", state: { sGu: seoulGu } });
+    history.push({ pathname: "/apply", state: { sGu: state.seoulGu } });
   };
   const onCheck = () => {
-    setNeedAdult(!needAdult);
+    setState({
+      ...state,
+      needAdult: !state.needAdult,
+    });
+  };
+
+  const option_num = () => {
+    const newArr = [];
+    for (let i = 2; i <= 6; i++) {
+      newArr.push(<option value={i}>{i}</option>);
+    }
+    return newArr;
   };
 
   return (
@@ -102,7 +123,7 @@ const ApplyWrite = ({ userObj }) => {
         <span className={styles.title}>가족 신청하기</span>
         <input
           className={styles.formTitle}
-          value={formTitle}
+          value={state.formTitle}
           type="text"
           name="title"
           placeholder="신청 제목 "
@@ -111,7 +132,7 @@ const ApplyWrite = ({ userObj }) => {
         />
         <textarea
           className={styles.formContent}
-          value={formContent}
+          value={state.formContent}
           type="text"
           name="content"
           placeholder="내용을 작성하세요"
@@ -124,7 +145,7 @@ const ApplyWrite = ({ userObj }) => {
 
             <select
               className={styles.select}
-              value={seoulGu}
+              value={state.seoulGu}
               name="seoul-gu"
               onChange={onSelect}
             >
@@ -138,13 +159,14 @@ const ApplyWrite = ({ userObj }) => {
             </select>
 
             {seoulRegion.forEach((seoulRegion) => {
-              if (seoulRegion.name === seoulGu) {
+              if (seoulRegion.name === state.seoulGu) {
                 selectRegion = seoulRegion.Dong;
+                return;
               }
             })}
             <select
               className={styles.select}
-              value={seoulDong}
+              value={state.seoulDong}
               name="seoul-dong"
               onChange={onSelect}
             >
@@ -161,20 +183,20 @@ const ApplyWrite = ({ userObj }) => {
             <label className={styles.label}>인원수 (본인 포함)</label>
             <select
               className={styles.select2}
-              value={numofFmy}
+              value={state.numofFmy}
               name="numOfFamily"
               onChange={onSelect}
             >
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>4</option>
-              <option value={5}>5</option>
-              <option value={6}>6</option>
+              {option_num()}
             </select>
           </div>
           <div className={styles.adult}>
             <label className={styles.label}>전담어른 필요 여부</label>
-            <input type="checkbox" checked={needAdult} onChange={onCheck} />
+            <input
+              type="checkbox"
+              checked={state.needAdult}
+              onChange={onCheck}
+            />
           </div>
         </div>
         <input className={styles.applyBtn} type="submit" value="작성하기" />

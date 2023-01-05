@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import style from "./Intro.module.css";
-//import family from "../img/family1.jpg";
-import job from "../img/job.jpg";
-import art from "../img/art.jpg";
 import mentor from "../img/mentor.jpg";
-import Typing from "../components/Typing";
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -54,11 +50,6 @@ const useFadeIn = (duration = 1, delay = 0, direction = "left") => {
 };
 
 function Intro() {
-  const introList = [
-    "새로운 형태의 가족",
-    "정서적 지원과 멘토 역할",
-    "댜양한 정보와 프로그램 제공",
-  ];
   const fadeInProgram1 = useFadeIn(1, 0);
   const fadeInProgram2 = useFadeIn(1, 1);
   const fadeInProgram3 = useFadeIn(1, 2);

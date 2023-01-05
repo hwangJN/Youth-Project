@@ -9,16 +9,17 @@ function App() {
   const [init, setInit] = useState(false);
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null);
-  const history = useHistory();
+  //const history = useHistory();
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
+        //authService.currentUser 항목 전부를 가져오지 않고 일부 항목만 뽑아서 저장함.
         setUserObj({
           email: user.email,
           displayName: user.displayName,
           uid: user.uid,
-          updateProfile: (args) => user.updateProfile(args),
+          updateProfile: (args) => user.updateProfile(args), // 프로필 수정
         }); //setIsLoggedIn(true);
       } else {
         //setIsLoggedIn(false);
@@ -27,24 +28,19 @@ function App() {
       setInit(true);
     });
   }, []);
+
   const refreshUserObj = async () => {
     const user = await authService.currentUser;
-
     if (user) {
-      console.log(user);
       setUserObj({
         email: user.email,
         displayName: user.displayName,
         uid: user.uid,
         updateProfile: (args) => user.updateProfile(args),
       });
-
-      //history.push("/");
     } else {
       return;
     }
-
-    console.log("refreshUserObj");
   };
 
   return (
