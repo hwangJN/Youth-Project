@@ -23,10 +23,12 @@ import Board from "./Board";
 import CommunityWriting from "../routes/CommunityWriting";
 import Intro from "../routes/Intro";
 import Footer from "./Footer";
+import ScrollToTop from "./ScrollToTop";
 
 const AppRouter = ({ isLoggedIn, userObj, refreshUserObj }) => {
   return (
     <HashRouter basename={"/"}>
+      <ScrollToTop /> {/* 다른 페이지 넘어갈 때 스크롤 맨 위로 초기화  */}
       <Navigation
         isLoggedIn={isLoggedIn}
         userObj={userObj}
@@ -79,7 +81,6 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUserObj }) => {
           <Project />
         </Route>
       </Switch>
-
       <Footer />
     </HashRouter>
   );
