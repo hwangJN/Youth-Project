@@ -120,6 +120,7 @@ const Project = () => {
           <option value="1">함께 복지정책</option>
         </select>
       </div>
+      {/* 인덱스에 따라 프로그램 : 복지정책 */}
       {index === "0" ? <Program /> : null}
       {index === "1" ? <Welfare /> : null}
     </div>
