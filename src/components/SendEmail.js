@@ -45,7 +45,12 @@ function SendEmail({ needAdult, adultEmail, applyerEmail }) {
       <div className={styles.mailDiv}>
         <label>To. </label>
         {needAdult ? (
-          <input className={styles.mail} name="toEmail" value={adultEmail} />
+          <input
+            readOnly
+            className={styles.mail}
+            name="toEmail"
+            value={adultEmail}
+          />
         ) : (
           <input name="toEmail" value={applyerEmail[0]} />
         )}

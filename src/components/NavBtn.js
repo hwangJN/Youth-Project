@@ -13,7 +13,7 @@ function NavBtn({ isLoggedIn, refreshUserObj, sidenav, setChange }) {
     if (isLoggedIn) {
       setLoginState(2);
     }
-  }, []);
+  }, [isLoggedIn]);
 
   //상단 메뉴인지 사이드바 메뉴인지(에 따라 메뉴 위치(style)결정)
   let style = styles;
@@ -23,6 +23,7 @@ function NavBtn({ isLoggedIn, refreshUserObj, sidenav, setChange }) {
   //로그아웃 버튼 클릭 함수
   const onLogOutClick = async () => {
     await authService.signOut().then(() => refreshUserObj());
+    setLoginState(0);
     //setChange(); //사이드바 사라짐
     //history.push("/");
   };

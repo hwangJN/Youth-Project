@@ -9,6 +9,7 @@ import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { dbService } from "../fbase";
 import { useHistory } from "react-router-dom";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 function MyFmyTable({
   seoulGu,
   seoulDong,
@@ -108,22 +109,26 @@ function MyFmyTable({
 function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
   const history = useHistory();
   //프로필
-  const [newDisplayName, setNewDisplayName] = useState("");
-  const [age, setAge] = useState("");
-  const [sex, setSex] = useState("man");
-  const [protect, setProtect] = useState("protect");
+  const [profileState, setProfileState] = useState({
+    newDisplayName: "",
+    age: "",
+    sex: "man",
+    protect: "protect",
+  });
   useEffect(() => {
     const getUser = async () => {
       const userObjRef = doc(dbService, "userObj", `${userObj.uid}`);
       const userObjSnap = await getDoc(userObjRef);
       let collection = "";
-      collection = userObjSnap.data().userObject;
+
       if (userObjSnap.exists()) {
-        setAge(collection.age);
-        setSex(collection.sex);
-        setProtect(collection.protect);
-        setIdentity(collection.protect);
-        setNewDisplayName(collection.nickname);
+        collection = userObjSnap.data().userObject;
+        setProfileState({
+          newDisplayName: collection.nickname,
+          age: collection.age,
+          sex: collection.sex,
+          protect: collection.protect,
+        });
       }
     };
 
@@ -134,9 +139,15 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
       target: { name, value },
     } = event;
     if (name === "sex") {
-      setSex(value);
+      setProfileState({
+        ...profileState,
+        sex: value,
+      });
     } else if (name === "protect") {
-      setProtect(value);
+      setProfileState({
+        ...profileState,
+        protect: value,
+      });
     }
   };
   const onChange = (event) => {
@@ -144,9 +155,15 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
       target: { name, value },
     } = event;
     if (name === "Name") {
-      setNewDisplayName(value);
+      setProfileState({
+        ...profileState,
+        newDisplayName: value,
+      });
     } else if (name === "Age") {
-      setAge(value);
+      setProfileState({
+        ...profileState,
+        age: value,
+      });
     }
   };
   const goToProfileUpdateComplete = () => {
@@ -159,13 +176,13 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
     const userObject = {
       userId: userObj.uid,
       createdAt: Date.now(),
-      nickname: newDisplayName,
-      age,
-      sex,
-      protect,
+      nickname: profileState.newDisplayName,
+      age: profileState.age,
+      sex: profileState.sex,
+      protect: profileState.protect,
     };
-
-    await updateDoc(doc(dbService, "userObj", `${userObj.uid}`), {
+    console.log(userObject);
+    await setDoc(doc(dbService, "userObj", `${userObj.uid}`), {
       userObject,
     }).then((data) => {
       goToProfileUpdateComplete();
@@ -214,7 +231,7 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
                 type="text"
                 placeholder="이름"
                 required
-                value={newDisplayName}
+                value={profileState.newDisplayName}
               />
             </td>
           </tr>
@@ -227,7 +244,7 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
                 onChange={onChange}
                 type="text"
                 placeholder="O세"
-                value={age}
+                value={profileState.age}
                 required
               />
             </td>
@@ -236,7 +253,7 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
             <th>성별</th>
             <td>
               <select
-                value={sex}
+                value={profileState.sex}
                 name="sex"
                 onChange={onSelect}
                 className={styles.select_sex}
@@ -250,7 +267,7 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
             <th>신분</th>
             <td>
               <select
-                value={protect}
+                value={profileState.protect}
                 name="protect"
                 onChange={onSelect}
                 className={styles.select}

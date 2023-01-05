@@ -16,7 +16,7 @@ import Profile from "../routes/Profile";
 
 import Apply from "../routes/Apply";
 import ApplyWrite from "../routes/ApplyWrite";
-import ApplyComplete from "../routes/ApplyComplete";
+
 import ApplyContent from "../routes/ApplyContent";
 import Map from "../routes/Map";
 import Board from "./Board";
@@ -46,6 +46,7 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUserObj }) => {
         <Route exact path="/profile">
           <Profile userObj={userObj} refreshUserObj={refreshUserObj} />
         </Route>
+
         <Route exact path="/intro">
           <Intro />
         </Route>
@@ -59,21 +60,21 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUserObj }) => {
         <Route exact path="/board/:id">
           <Board isLoggedIn={isLoggedIn} userObj={userObj} />
         </Route>
+
+        <Route exact path="/map">
+          <Map isLoggedIn={isLoggedIn} userObj={userObj} />
+        </Route>
         <Route exact path="/apply">
           <Apply isLoggedIn={isLoggedIn} userObj={userObj} />
         </Route>
+
         <Route exact path="/applycontent">
           <ApplyContent userObj={userObj} />
         </Route>
         <Route exact path="/applywrite">
           <ApplyWrite userObj={userObj} />
         </Route>
-        <Route exact path="/applyComplete">
-          <ApplyComplete />
-        </Route>
-        <Route exact path="/map">
-          <Map isLoggedIn={isLoggedIn} userObj={userObj} />
-        </Route>
+
         <Route exact path="/program">
           <Project />
         </Route>

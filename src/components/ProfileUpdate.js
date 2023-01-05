@@ -17,16 +17,18 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
   const [Identity, setIdentity] = useState("protect");
 
   //나의 가족 확인
-  const [seoulGu, setSeoulGu] = useState("");
-  const [seoulDong, setSeoulDong] = useState("");
-  const [numofFmy, setNumofFmy] = useState();
-  const [applyer, setApplyer] = useState([]);
-  const [applyerModi, setApplyerModi] = useState([]);
-  const [applyerEmail, setApplyerEmail] = useState([]);
-  const [complete, setComplete] = useState();
-  const [needAdult, setNeedAdult] = useState(false);
-  const [adultNickname, setAdultNickname] = useState("");
-  const [adultEmail, setAdultEmail] = useState([]);
+  const [state, setState] = useState({
+    seoulGu: "",
+    seoulDong: "",
+    numofFmy: 0,
+    applyer: [],
+    applyerModi: [],
+    applyerEmail: [],
+    complete: false,
+    needAdult: false,
+    adultNickname: "",
+    adultEmail: [],
+  });
 
   //toggle
   const [myFmyBtn, setMyFmyBtn] = useState(false); //프로필인지 나의가족확인인지
@@ -38,30 +40,38 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
     const getUser = async () => {
       const userObjRef = doc(dbService, "userObj", `${userObj.uid}`);
       const userObjSnap = await getDoc(userObjRef);
-      let applyform = userObjSnap.data().applyForm;
-      if (applyform === userObj.uid) {
-        setIsApplyer(true);
-      }
-
-      const applyObjRef = doc(dbService, "Family", `${applyform}`); //Family obj를 찾음
-      const docSnap = await getDoc(applyObjRef);
-
-      if (docSnap.exists()) {
-        if (docSnap.data().complete) setComplete(true);
-        setLoading(false);
-        setExistForm(true);
-        setApplyer(docSnap.data().applyList);
-        setApplyerEmail(docSnap.data().applyList_email);
-        setApplyerModi(docSnap.data().applyList);
-        setSeoulGu(docSnap.data().seoulGu);
-        setSeoulDong(docSnap.data().seoulDong);
-        setNeedAdult(docSnap.data().needAdult);
-        setNumofFmy(docSnap.data().numofFmy);
-        setAdultNickname(docSnap.data().audultNickname);
-        setAdultEmail(docSnap.data().adultEmail);
-      } else {
-        setExistForm(false);
-        setLoading(false);
+      let applyform;
+      if (userObjSnap.exists()) {
+        applyform = userObjSnap.data().applyForm;
+        if (applyform === userObj.uid) {
+          setIsApplyer(true);
+        }
+        const applyObjRef = doc(dbService, "Family", `${applyform}`); //Family obj를 찾음
+        const docSnap = await getDoc(applyObjRef);
+        let fmyComplete = false;
+        if (docSnap.exists()) {
+          if (docSnap.data().complete) {
+            fmyComplete = true;
+            //setState({ complete: true }); //이걸로 하면 실행 X 왜?
+          }
+          setState({
+            seoulGu: docSnap.data().seoulGu,
+            seoulDong: docSnap.data().seoulDong,
+            numofFmy: docSnap.data().numofFmy,
+            applyer: docSnap.data().applyList,
+            applyerModi: docSnap.data().applyList,
+            applyerEmail: docSnap.data().applyList_email,
+            needAdult: docSnap.data().needAdult,
+            adultNickname: docSnap.data().audultNickname,
+            adultEmail: docSnap.data().adultEmail,
+            complete: fmyComplete,
+          });
+          setExistForm(true);
+          setLoading(false);
+        } else {
+          setExistForm(false);
+          setLoading(false);
+        }
       }
     };
     getUser();
@@ -76,8 +86,6 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
       const applyObjRef = doc(dbService, "Family", `${applyform}`); //Family obj를 찾음
       const docSnap = await getDoc(applyObjRef);
       let nickname = userObjSnap.data().userObject.nickname;
-      console.log(nickname);
-      //let restOfFmy_num = docSnap.data().restOfFmy;
       if (docSnap.exists()) {
         //내 userObj 에서 신청 내역 삭제
         await updateDoc(userObjRef, {
@@ -87,7 +95,9 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
         //폼 obj의 신청자 list에서 내 아이디 삭제후 남은 인원 update
         await updateDoc(applyObjRef, {
           restOfFmy: docSnap.data().restOfFmy + 1,
-          applyList: applyerModi.filter((Element) => Element !== nickname),
+          applyList: state.applyerModi.filter(
+            (Element) => Element !== nickname
+          ),
           //applyList: deleteField(),
           // deleteField(),
         }).then(() => {
@@ -133,20 +143,20 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
 
                 <form>
                   <MyFmyTable
-                    seoulGu={seoulGu}
-                    seoulDong={seoulDong}
-                    numofFmy={numofFmy}
-                    applyer={applyer}
-                    applyerEmail={applyerEmail}
-                    needAdult={needAdult}
-                    adultNickname={adultNickname}
-                    complete={complete}
+                    seoulGu={state.seoulGu}
+                    seoulDong={state.seoulDong}
+                    numofFmy={state.numofFmy}
+                    applyer={state.applyer}
+                    applyerEmail={state.applyerEmail}
+                    needAdult={state.needAdult}
+                    adultNickname={state.adultNickname}
+                    complete={state.complete}
                   />
 
                   {/* 폼 작성자가 아닌 경우 취소하기 */}
                   {!isApplyer ? (
                     <>
-                      {!complete ? (
+                      {!state.complete ? (
                         <button
                           className={styles.submitBtn}
                           onClick={cancelApply}
@@ -188,11 +198,11 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
           </div>
 
           {/* 메일 보내기 */}
-          {complete && myFmyBtn && !(Identity === "adult") ? (
+          {state.complete && myFmyBtn && !(Identity === "adult") ? (
             <SendEmail
-              needAdult={needAdult}
-              adultEmail={adultEmail}
-              applyerEmail={applyerEmail}
+              needAdult={state.needAdult}
+              adultEmail={state.adultEmail}
+              applyerEmail={state.applyerEmail}
             />
           ) : null}
         </div>
