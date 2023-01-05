@@ -103,6 +103,14 @@ const ApplyWrite = ({ userObj }) => {
     });
   };
 
+  const option_num = () => {
+    const newArr = [];
+    for (let i = 2; i <= 6; i++) {
+      newArr.push(<option value={i}>{i}</option>);
+    }
+    return newArr;
+  };
+
   return (
     <div className={styles.container}>
       <form onSubmit={onSubmit} className={styles.form}>
@@ -153,6 +161,7 @@ const ApplyWrite = ({ userObj }) => {
             {seoulRegion.forEach((seoulRegion) => {
               if (seoulRegion.name === state.seoulGu) {
                 selectRegion = seoulRegion.Dong;
+                return;
               }
             })}
             <select
@@ -178,11 +187,7 @@ const ApplyWrite = ({ userObj }) => {
               name="numOfFamily"
               onChange={onSelect}
             >
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>4</option>
-              <option value={5}>5</option>
-              <option value={6}>6</option>
+              {option_num()}
             </select>
           </div>
           <div className={styles.adult}>
