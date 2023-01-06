@@ -167,17 +167,19 @@ const ApplyContent = ({ userObj }) => {
         </div>
 
         {/* 하단 신청 버튼 */}
-        {formFull ? (
-          <button onClick={applyAdult} className={styles.rowBtn}>
-            전담어른
-            <br />
-            신청하기
-          </button>
-        ) : (
-          <button onClick={applyBtn} className={styles.rowBtn}>
-            {mode ? "삭제하기" : "신청하기"}
-          </button>
-        )}
+        <div className={styles.rowBtnDiv}>
+          {formFull ? (
+            <button onClick={applyAdult} className={styles.rowBtn}>
+              전담어른
+              <br />
+              신청하기
+            </button>
+          ) : (
+            <button onClick={applyBtn} className={styles.rowBtn}>
+              {mode ? "삭제하기" : "신청하기"}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -70,6 +70,15 @@
   width: 500px;
   border-radius: 5px;
 }
+@media screen and (max-width: 590px) {
+  .form {
+    width: 430px;
+  }
+  .formTitle,
+  .formContent {
+    width: 400px;
+  }
+}
 .option {
   margin-top: 20px;
   display: flex;

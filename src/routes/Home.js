@@ -33,10 +33,13 @@ const Home = ({ userObj }) => {
 
         {/* 두번째 장 */}
         <div className={styles.mainWrap3}>
-          <span className={styles.Wrap3SubTitle}>
-            " 이제 어떻게 살아가야 할까요? "
-          </span>
+          <div className={styles.wrapper}>
+            <div className={styles.spinner}></div>
+          </div>
           <div className={styles.mainContent3}>
+            <span className={styles.Wrap3SubTitle}>
+              " 이제 어떻게 살아가야 할까요? "
+            </span>
             <h1>
               가족 맞춤형 <br />
               <span className={styles.fontLarge2}> 전담 어른 배치</span>
@@ -46,6 +49,7 @@ const Home = ({ userObj }) => {
               고민을 나누고 도움을 받을 수 있습니다.
             </h2>
           </div>
+
           <img src={require("../img/메인3.png")} className={styles.mainImg3} />
         </div>
 
