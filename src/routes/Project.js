@@ -8,6 +8,7 @@ import { welfareItem } from "../components/welfareItem";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 
 const Program = () => {
+  //슬라이더 다음 화살표 아이콘 지정
   function NextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -17,6 +18,7 @@ const Program = () => {
     );
   }
 
+  //슬라이더 이전 화살표 아이콘 지정
   function PrevArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -27,23 +29,30 @@ const Program = () => {
   }
 
   const settings = {
-    dots: false,
-    arrows: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
+    dots: false, //슬라이드 밑에 점 유무
+    arrows: true, //화살표 유무
+    infinite: true, //무한 반복
+    speed: 500, //넘기는 속도
+    slidesToShow: 3, // 3장씩 보이도록
+    slidesToScroll: 1, //1장씩 뒤로 넘어가기
+    autoplay: true, //
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     centerMode: true,
-    centerPadding: "0px",
+    centerPadding: "0px", //끝쪽 이미지 안잘리도록
     responsive: [
       {
-        breakpoint: 864,
+        breakpoint: 864, //width가 864 이하일 경우
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 2, // 2장씩 보이도록
+          slidesToScroll: 1, //1장씩 뒤로 넘어가기
+        },
+      },
+      {
+        breakpoint: 580, //width가 580 이하일 경우
+        settings: {
+          slidesToShow: 1, // 1장씩 보이도록
+          slidesToScroll: 1, //1장씩 뒤로 넘어가기
         },
       },
     ],
@@ -60,7 +69,7 @@ const Program = () => {
                 {name.type}
               </h2>
 
-              <Slider {...settings} className="hi">
+              <Slider {...settings}>
                 {ProgramItems[idx].map((item, index) => {
                   return (
                     <div key={index} className="programItem">
