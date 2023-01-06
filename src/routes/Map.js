@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./Map.css";
 import { seoulRegion } from "../components/OptionOfRegion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapPin, faMap } from "@fortawesome/free-solid-svg-icons";
+import { faMap } from "@fortawesome/free-solid-svg-icons";
 import { doc, getDoc } from "firebase/firestore";
 import { dbService } from "../fbase";
 

@@ -14,13 +14,15 @@ const Apply = ({ isLoggedIn, userObj }) => {
   const [formComplete, setFormComplete] = useState(false); //가족신청 or 전담어른신청(toggle버튼)
   const [alreadySubmit, setAlreadySubmit] = useState(false); //이미 폼 만든 사람인지
   const [isAdult, setIsAdult] = useState(false);
-  const userRef = doc(dbService, "userObj", `${userObj.uid}`);
 
   let sGu = "강남구";
   const location = useLocation();
   if (location.state) sGu = location.state.sGu;
-
+  let userRef = null;
   useEffect(() => {
+    if (isLoggedIn) {
+      userRef = doc(dbService, "userObj", `${userObj.uid}`);
+    }
     //이미 신청한 사람인지
     const already = async () => {
       const userSnap = await getDoc(userRef);

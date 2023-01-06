@@ -19,7 +19,7 @@ const useScroll = () => {
   return state;
 };
 
-const useFadeIn = (duration = 1, delay = 0, direction = "left") => {
+const useFadeIn = (duration = 1, delay = 0, direction = "right") => {
   const element = useRef();
   const { y } = useScroll();
   const [trList, setTrList] = useState([]);
