@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import style from "./Intro.module.css";
 import mentor from "../img/mentor.jpg";
 
+//사용자가 현재 위치한 x,y 좌표값 계산
 const useScroll = () => {
   const [state, setState] = useState({
     x: 0,
@@ -19,11 +20,13 @@ const useScroll = () => {
   return state;
 };
 
+//사용자가 현재 위치한 y 좌표값에 따라 fadeIn 기능 구현
 const useFadeIn = (duration = 1, delay = 0, direction = "right") => {
   const element = useRef();
-  const { y } = useScroll();
+  const { y } = useScroll(); //y값은 스크롤 y 방향
   const [trList, setTrList] = useState([]);
   useEffect(() => {
+    //direction은 fadeIn 방향을 결정 (방향의 디폴트 값은 right)
     if (direction === "up") {
       setTrList(["translateY(0px)", "translate3d(0, 50%, 0)"]);
     } else if (direction === "left") {
@@ -31,7 +34,9 @@ const useFadeIn = (duration = 1, delay = 0, direction = "right") => {
     } else if (direction === "right") {
       setTrList(["translateX(0px)", "translate3d(-50%, 0, 0)"]);
     }
-    if (y >= 440 && y < 1000) {
+
+    //y 좌표값이 440과 1500 사이 일때만 fadeIn 이벤트 작동
+    if (y >= 440 && y < 1500) {
       const { current } = element;
       current.style.transition = `all ${duration}s ease-in-out ${delay}s`;
       current.style.transform = trList[0];
@@ -101,7 +106,7 @@ function Intro() {
           />
           <h3>새로운 형태의 가족</h3>
           <p className={style.programContent}>
-            혼자 살기 어려운 청년들이 모여 새로운 가족을 결성할 수 있도록
+            청년들이 모여 새로운 가족을 결성할 수 있도록
             <br /> 지역별로 자유롭게 가족 신청 폼을 작성할 수 있습니다.
           </p>
         </div>
