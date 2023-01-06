@@ -14,7 +14,7 @@ const Navigation = ({ isLoggedIn, userObj, refreshUserObj }) => {
   useEffect(() => {
     const changeWidth = () => {
       setWidth(window.innerWidth);
-      if (window.innerWidth >= 960) {
+      if (window.innerWidth >= 1020) {
         setSidnav(false);
       }
     };
@@ -43,7 +43,7 @@ const Navigation = ({ isLoggedIn, userObj, refreshUserObj }) => {
         </div>
 
         {/*윈도우 창 클때 // 작을때*/}
-        {width >= 960 ? (
+        {width >= 1020 ? (
           <>
             {/*상단 메뉴 리스트*/}
             <ul className={style.manuBar}>

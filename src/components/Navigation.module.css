@@ -189,13 +189,15 @@
   font-weight: 100;
 }
 .sideBarLink:hover {
-  transition: 0.6s;
+  /* transition: 0.3s; */
   color: white;
   background-color: black;
   border-radius: 10px;
-  font-size: 30px;
 }
-@media (max-width: 630px) {
+.subIcon {
+  margin-right: 10px;
+}
+@media (max-width: 640px) {
   .sideBarLink {
     font-size: 14px;
   }
@@ -212,6 +214,6 @@
   padding: 5px;
 }
 
-.subBarText {
+/* .subBarText {
   margin-left: 10px;
-}
+} */
