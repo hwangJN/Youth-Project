@@ -148,19 +148,13 @@
     width: 400px;
   }
   .toggleBtn {
-    width: 180px;
+    width: 200px;
   }
   .formList {
-    width: 320px;
+    width: 358px;
   }
-}
-@media screen and (max-width: 620px) {
   .form {
     width: 340px;
-  }
-  .formTitle {
-    display: inline-block;
-    width: 300px;
   }
 }
 
