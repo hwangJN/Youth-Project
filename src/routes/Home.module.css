@@ -144,8 +144,8 @@
 }
 
 .mainImg2 {
-  width: 700px;
-  height: 590px;
+  width: 530px;
+  height: 580px;
 }
 
 .mainWrap3 {
@@ -196,7 +196,11 @@
 }
 
 .mainImg3 {
-  width: 45%;
-  height: 500px;
-  margin-right: -10%;
+  /*width: 45%;
+  position: absolute;
+  top: 200px;
+  right: 200px;*/
+
+  width: 400px;
+  height: 400px;
 }

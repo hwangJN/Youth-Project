@@ -56,6 +56,11 @@
   width: 350px;
   height: 440px;
 }
+@media screen and (max-width: 850px) {
+  .loginSide {
+    display: none;
+  }
+}
 .logintitle {
   text-align: center;
   margin-top: 10px;
