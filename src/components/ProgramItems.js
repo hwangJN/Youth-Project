@@ -1,11 +1,6 @@
 import {
   faBook,
   faBookmark,
-  faCrown,
-  faHeart,
-  faMugHot,
-  faMugSaucer,
-  faShapes,
   faWallet,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

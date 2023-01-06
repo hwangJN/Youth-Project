@@ -1,7 +1,6 @@
 import AppRouter from "./Router";
 import React, { useEffect, useState } from "react";
 import { authService } from "../fbase";
-import { useHistory } from "react-router-dom";
 import styles from "./App.module.css";
 function App() {
   //바로 코드를 실행시키면, 로그인 한 상태여도 firebase가 바로 로딩되지 않기 때문에

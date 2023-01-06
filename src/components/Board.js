@@ -8,7 +8,7 @@ import BoardItem from "./BoardItem";
 
 const Board = ({ isLoggedIn, userObj }) => {
   const [board, setBoard] = useState([]);
-  const { id } = useParams();
+  const { id } = useParams(); //path="/board/:id"
   useEffect(() => {
     const q = query(collection(dbService, "board"));
     onSnapshot(q, (snapshot) => {
