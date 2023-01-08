@@ -6,10 +6,13 @@ import { useHistory } from "react-router-dom";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+//게시글 작성
 const CommunityWriting = ({ isLoggedIn, userObj }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const history = useHistory();
+
+  //게시글 등록
   const onSubmit = async (event) => {
     event.preventDefault();
     const date = new Date();
@@ -19,17 +22,17 @@ const CommunityWriting = ({ isLoggedIn, userObj }) => {
     const hour = String(date.getHours()).padStart(2, "0");
     const min = String(date.getMinutes()).padStart(2, "0");
     await addDoc(collection(dbService, "board"), {
-      textTitle: title,
-      textContent: content,
-      date: `${year}/${month}/${day} ${hour}:${min}`,
-      creatorId: userObj.uid,
+      textTitle: title, //제목
+      textContent: content, //내용
+      date: `${year}/${month}/${day} ${hour}:${min}`, //작성일
+      creatorId: userObj.uid, //게시글 작성자
       createdAt: Date.now(),
-      views: 0,
-      comments: [],
+      views: 0, //조회수
+      comments: [], //댓글
     });
     setTitle("");
     setContent("");
-    history.push("/community");
+    history.push("/community"); //게시글 등록시 다시 커뮤니티로 복귀
   };
   const onChange = (event) => {
     const {

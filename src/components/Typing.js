@@ -56,7 +56,7 @@ const Typing = ({ text, text2, speed, fontSize = "1em", color = "black" }) => {
       setText("");
       setText2("");
     }
-  }); // , [Text.length, Text2.length, speed, text, text2, y] 를 적은 이유는 뭘까? 없어도 실행 화면이 같음.
+  });
 
   return (
     <h2>

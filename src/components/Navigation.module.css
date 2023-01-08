@@ -49,7 +49,6 @@
   width: 100%;
   height: 90px;
   border: 1px;
-  /*box-sizing: border-box;  살짝 크기 안맞을 때 이용하는 거?*/
   justify-content: space-between; /*컴포넌트 사이에 공간*/
   align-items: center; /* 같은 줄 Height 가운데 정렬*/
   background-color: rgb(255, 255, 255);
@@ -172,7 +171,6 @@
   background: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  /*justify-content: center;*/
   align-items: center;
   padding: 0;
   box-sizing: border-box;
@@ -189,7 +187,6 @@
   font-weight: 100;
 }
 .sideBarLink:hover {
-  /* transition: 0.3s; */
   color: white;
   background-color: black;
   border-radius: 10px;
@@ -201,9 +198,6 @@
   .sideBarLink {
     font-size: 14px;
   }
-  .sideBarLink:hover {
-    /*font-size: 24px;*/
-  }
   .subIcon {
     display: none;
   }
@@ -213,7 +207,3 @@
   margin: 10px;
   padding: 5px;
 }
-
-/* .subBarText {
-  margin-left: 10px;
-} */

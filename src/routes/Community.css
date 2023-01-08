@@ -12,17 +12,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 17vh 50px;
-  padding-bottom: 0px;
+  padding-top: 150px;
+  padding-bottom: 50px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #f4dada;
 }
 
 .boardName {
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 65%;
   justify-content: flex-start;
   margin-bottom: 6px;
 }
@@ -65,7 +65,7 @@
 }
 
 .boardListWrap {
-  width: 60%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -168,4 +168,16 @@
 
 .pagination .active a {
   color: white;
+}
+
+@media screen and (max-width: 850px) {
+  .boardListWrap {
+    width: 570px;
+  }
+  .board {
+    width: 130%;
+  }
+  .boardName {
+    width: 570px;
+  }
 }

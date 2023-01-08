@@ -7,7 +7,7 @@
 }
 
 .btnItems {
-  width: 50%;
+  width: 55%;
   display: flex;
   justify-content: flex-end;
   margin-bottom: 12px;
@@ -34,7 +34,7 @@
   border-radius: 5px;
   padding: 10px 15px;
   padding-bottom: 30px;
-  width: 50%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
@@ -237,4 +237,10 @@
   margin-top: 3px;
   color: rgba(125, 125, 125, 0.6);
   font-size: 13px;
+}
+
+@media screen and (max-width: 667px) {
+  .item {
+    width: 360px;
+  }
 }
