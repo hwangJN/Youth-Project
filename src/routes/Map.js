@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Map.css";
 import { seoulRegion } from "../components/OptionOfRegion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +9,13 @@ import { dbService } from "../fbase";
 
 const Map = ({ isLoggedIn, userObj }) => {
   const [alreadySubmit, setAlreadySubmit] = useState(false); //이미 폼 만든 사람인지
+  const [region, setRegion] = useState([]);
   useEffect(() => {
+    const regionArray = seoulRegion.map((item) => ({
+      ...item,
+      id: item.id,
+    }));
+    setRegion(regionArray);
     const isCreated = async () => {
       const docRef = doc(dbService, "Family", `${userObj.uid}`);
       const docSnap = await getDoc(docRef);
@@ -32,6 +38,7 @@ const Map = ({ isLoggedIn, userObj }) => {
     }
   };
   const history = useHistory();
+
   return (
     <div className="container">
       <div>
@@ -44,7 +51,8 @@ const Map = ({ isLoggedIn, userObj }) => {
           <button className="applyBtn" onClick={applyBtn}>
             신청하기
           </button>
-          {seoulRegion.map((gu, key) => {
+          {/* 
+                  {seoulRegion.map((gu, key) => {
             return (
               <button
                 key={key}
@@ -58,6 +66,17 @@ const Map = ({ isLoggedIn, userObj }) => {
               >
                 {gu.name}
               </button>
+            );
+          })}
+          
+          */}
+          {region.map((item, key) => {
+            return (
+              <Link to={`/apply/${key}`}>
+                <button key={key} className={item.style}>
+                  {item.name}
+                </button>
+              </Link>
             );
           })}
         </div>

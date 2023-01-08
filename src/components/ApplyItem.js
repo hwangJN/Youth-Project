@@ -1,8 +1,9 @@
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { dbService } from "../fbase";
 import styles from "../routes/Apply.module.css";
+import ApplyContent from "../routes/ApplyContent";
 
 const ApplyItem = ({
   isLoggedIn,
@@ -11,6 +12,7 @@ const ApplyItem = ({
   alreadyApply,
   isAdult,
   userObj,
+  guKey,
 }) => {
   const history = useHistory();
   const [fmyarray, setFmyArray] = useState([]);
@@ -40,37 +42,30 @@ const ApplyItem = ({
       }));
       setFmyArray(familyarray);
     });
-  }, [formComplete]);
+  }, [formComplete, sGu]);
 
   const onClick = (fmyarray) => {
     const goToDetail = () => {
       history.push({
-        pathname: "/applycontent",
-        state: {
-          applyObject: fmyarray,
-        },
+        pathname: `/applycontent/${fmyarray}`,
       });
     };
     if (!isLoggedIn) {
       alert("로그인 후 이용해 주세요.");
     } else if (alreadyApply) {
-      if (fmyarray.applyerId === userObj.uid) {
+      if (fmyarray.applyerId !== userObj.uid) {
         //본인이 작성한 폼은 볼 수 있음
-        goToDetail();
-      } else alert("이미 신청한 폼이 존재합니다.");
+        alert("이미 신청한 폼이 존재합니다.");
+      } else goToDetail();
     } else {
       if (formComplete) {
-        if (isAdult) {
-          goToDetail();
-        } else {
-          alert("전담 어른만 이용할 수 있습니다.");
-        }
-      } else {
         if (!isAdult) {
-          goToDetail();
-        } else {
+          alert("전담 어른만 이용할 수 있습니다.");
+        } else goToDetail();
+      } else {
+        if (isAdult) {
           alert("전담어른은 신청할 수 없습니다.");
-        }
+        } else goToDetail();
       }
     }
   };
@@ -90,21 +85,23 @@ const ApplyItem = ({
               className={styles.form}
               key={idx}
               onClick={() => {
-                onClick(fmyarray);
+                onClick(fmyarray.id);
               }}
             >
-              <div>
-                <span className={styles.formRegion_Complete}>
-                  {fmyarray.seoulGu}
-                </span>
-                <span className={styles.formRegion_Complete}>
-                  {fmyarray.seoulDong}
-                </span>
-                <span className={styles.restFmy}>
-                  남은 인원 : {fmyarray.restOfFmy}
-                </span>
-              </div>
-              <span className={styles.formTitle}>{fmyarray.formTitle}</span>
+              <>
+                <div>
+                  <span className={styles.formRegion_Complete}>
+                    {fmyarray.seoulGu}
+                  </span>
+                  <span className={styles.formRegion_Complete}>
+                    {fmyarray.seoulDong}
+                  </span>
+                  <span className={styles.restFmy}>
+                    남은 인원 : {fmyarray.restOfFmy}
+                  </span>
+                </div>
+                <span className={styles.formTitle}>{fmyarray.formTitle}</span>
+              </>
             </div>
           );
         })}

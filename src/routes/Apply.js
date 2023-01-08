@@ -1,23 +1,25 @@
 import { doc, getDoc } from "firebase/firestore";
 import React, { useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import { dbService } from "../fbase";
 import styles from "./Apply.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapPin } from "@fortawesome/free-solid-svg-icons";
 import ApplyItem from "../components/ApplyItem";
 import { useEffect } from "react";
+import useHistoryState from "../components/useHistoryState";
+import { seoulRegion } from "../components/OptionOfRegion";
 
 const Apply = ({ isLoggedIn, userObj }) => {
   const history = useHistory();
-
+  const { id } = useParams(); //path="/board/:id"
   const [formComplete, setFormComplete] = useState(false); //가족신청 or 전담어른신청(toggle버튼)
   const [alreadySubmit, setAlreadySubmit] = useState(false); //이미 폼 만든 사람인지
   const [isAdult, setIsAdult] = useState(false);
 
-  let sGu = "강남구";
-  const location = useLocation();
-  if (location.state) sGu = location.state.sGu;
+  const [sGu, setSGu] = useState("");
+  let guKey;
+
   let userRef = null;
   useEffect(() => {
     if (isLoggedIn) {
@@ -33,6 +35,18 @@ const Apply = ({ isLoggedIn, userObj }) => {
     };
     already();
   }, []);
+  function getGu() {
+    seoulRegion.map((item, key) => {
+      if (key === Number(id)) {
+        setSGu(item.name);
+        guKey = key;
+      }
+    });
+  }
+  useEffect(() => {
+    getGu();
+  }, []);
+
   const applyBtn = () => {
     if (isLoggedIn) {
       if (alreadySubmit) {
@@ -67,14 +81,10 @@ const Apply = ({ isLoggedIn, userObj }) => {
             {sGu}
           </span>
           <div className={styles.btnDiv}>
-            <button
-              className={styles.btn}
-              onClick={() => {
-                history.push("./map");
-              }}
-            >
-              지역 선택
-            </button>
+            <Link to="/map">
+              <button className={styles.btn}>지역 선택</button>
+            </Link>
+
             <button className={styles.btn} onClick={applyBtn}>
               가족 신청
             </button>
@@ -106,6 +116,7 @@ const Apply = ({ isLoggedIn, userObj }) => {
           </button>
         </div>
         {/* 신청 폼 목록(가족 신청+전담어른 신청) */}
+
         <ApplyItem
           isLoggedIn={isLoggedIn}
           sGu={sGu}
@@ -113,6 +124,7 @@ const Apply = ({ isLoggedIn, userObj }) => {
           alreadyApply={alreadySubmit}
           isAdult={isAdult}
           userObj={userObj}
+          guKey={guKey}
         />
       </div>
     </div>
