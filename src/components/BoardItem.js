@@ -76,13 +76,13 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
     const min = String(date.getMinutes()).padStart(2, "0");
     await updateDoc(boardRef, {
       comments: [
+        ...itemObj.comments,
         {
           comment: newComment,
           id: userObj.uid,
           now: Date.now(),
           date: `${year}/${month}/${day} ${hour}:${min}`,
         },
-        ...itemObj.comments,
       ],
     });
     setNewComment("");
@@ -103,6 +103,7 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
 
   return (
     <div className="boarditem">
+      {/* editing ? 수정하기 : 게시글 보이기 */}
       {editing ? (
         <>
           <form onSubmit={onSubmit} className="formBox">
@@ -118,6 +119,7 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
               </div>
             </div>
             <div className="formContent">
+              {/* 제목 수정 */}
               <input
                 name="title"
                 value={newTitle}
@@ -126,6 +128,7 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
                 maxLength={50}
                 required
               />
+              {/* 내용 수정 */}
               <textarea
                 name="content"
                 value={newContent}
@@ -139,12 +142,14 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
         </>
       ) : (
         <>
+          {/* 글쓴이의 경우 삭제와 수정 버튼 보이도록 */}
           {isOwner && (
             <div className="btnItems">
               <button onClick={onDeleteClick}>삭제</button>
               <button onClick={toggleEditing}>수정</button>
             </div>
           )}
+
           <div className="item">
             <h2 className="itemTitle">{itemObj.textTitle}</h2>
             <span className="itemDetail">
@@ -164,6 +169,7 @@ const BoardItem = ({ itemObj, isOwner, userObj }) => {
                 목록
               </Link>
             </div>
+
             <div className="commentBox">
               <span>댓글작성</span>
               <form onSubmit={onCommentSubmit} className="commentForm">

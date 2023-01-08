@@ -64,12 +64,16 @@
 
 .mainWrap {
   width: 100%;
-  height: 90vh;
+  height: 90%;
   display: flex;
   flex-direction: column;
-
   align-items: center;
   margin-bottom: 0px;
+}
+
+.mainContent {
+  margin-bottom: 15%;
+  padding: 5px;
 }
 
 .mainContent :local h1 {
@@ -109,15 +113,19 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 90vh;
+  height: 90%;
   background-color: white;
 }
+
 .mainContent2 {
   margin-left: 10px;
   width: 450px;
   height: 420px;
   margin-top: 35px;
+  margin-bottom: 15%;
+  padding: 5px;
 }
+
 .mainContent2 :local h1 {
   font-family: "MICEGothic Bold";
   font-size: 55px;
@@ -139,7 +147,6 @@
   font-weight: 400;
   color: rgba(0, 0, 0, 0.7);
   margin-left: 0px;
-
   width: 450px;
 }
 
@@ -176,16 +183,21 @@
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  height: 780px;
+  height: 90%;
   background-color: #eedecf;
 }
+
 .mainContent3 {
   position: relative;
-  padding-left: 50px;
+  padding: 5px;
+  padding-left: 15px;
   display: flex;
   flex-direction: column;
   height: 400px;
+  margin-bottom: 30%;
+  margin-top: 30%;
 }
+
 .mainContent3 :local h1 {
   font-family: "MICEGothic Bold";
   font-size: 38px;
@@ -219,14 +231,10 @@
 }
 
 .mainImg3 {
-  /*width: 45%;
-  position: absolute;
-  top: 200px;
-  right: 200px;*/
-
   width: 400px;
   height: 400px;
 }
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -235,10 +243,23 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes backSpin {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 @media screen and (max-width: 878px) {
   .fontLarge2 {
     margin-left: 0px;
     font-size: 52px;
+  }
+  .mainWrap3 {
+    justify-content: center;
   }
   .mainWrap3 :local img {
     display: none;
@@ -252,14 +273,30 @@
     margin-top: 20px;
     text-align: center;
   }
-  .mainContent3 {
+
+  .mainContentCircle {
     padding: 50px;
     width: 400px;
+    height: 400px;
     border: 18px solid #ddbfa2c7;
-    border-top: 20px solid #ddbfa2;
-    border-bottom: 20px solid #ddbfa2;
+    border-top: 18px solid #ddbfa2;
+    border-bottom: 18px solid #ddbfa2;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    animation: spin 7s linear infinite;
+  }
+
+  .mainContent3 {
+    width: 400px;
+    box-sizing: border-box;
     background-color: rgba(255, 255, 255, 0.819);
     border-radius: 50%;
+    margin: 0;
+    animation: backSpin 7s linear infinite;
   }
 
   .mainContent3 :local h2 {
@@ -268,10 +305,4 @@
     text-align: center;
     margin-top: 20px;
   }
-  /*
-  .wrapper {
-  }
-  .spinner {
-    width: 400px;
-  }*/
 }

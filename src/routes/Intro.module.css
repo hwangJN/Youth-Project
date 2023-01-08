@@ -46,7 +46,8 @@
   justify-content: space-evenly;
   margin-top: 0px;
   margin-bottom: 10px;
-  height: 90vh;
+  width: 100%;
+  height: 90%;
 }
 
 .firstIntroImg {
@@ -58,6 +59,7 @@
   flex-direction: column;
   margin-top: 80px;
   padding: 5px;
+  margin-bottom: 10%;
 }
 .introSummary :local h1 {
   font-family: "MICEGothic Bold";
@@ -111,8 +113,9 @@
   width: 100%;
   margin-top: 50px;
   margin-bottom: 50px;
-  height: 70vh;
+  height: 90%;
   padding-top: 30px;
+  margin-bottom: 10%;
 }
 
 .program {
