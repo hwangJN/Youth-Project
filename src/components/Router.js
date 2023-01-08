@@ -66,11 +66,11 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUserObj }) => {
         <Route exact path="/map">
           <Map isLoggedIn={isLoggedIn} userObj={userObj} />
         </Route>
-        <Route exact path="/apply">
+        <Route exact path="/apply/:id">
           <Apply isLoggedIn={isLoggedIn} userObj={userObj} />
         </Route>
 
-        <Route exact path="/applycontent">
+        <Route exact path="/applycontent/:id">
           <ApplyContent userObj={userObj} />
         </Route>
         <Route exact path="/applywrite">
