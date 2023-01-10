@@ -98,8 +98,9 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
           applyList: state.applyerModi.filter(
             (Element) => Element !== nickname
           ),
-          //applyList: deleteField(),
-          // deleteField(),
+          applyList_email: state.applyerEmailModi.filter(
+            (Element) => Element !== userObj.email
+          ),
         }).then(() => {
           history.push("/");
         });
