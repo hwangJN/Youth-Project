@@ -20,7 +20,7 @@ const Navigation = ({ isLoggedIn, userObj, refreshUserObj }) => {
     };
 
     window.addEventListener("resize", changeWidth);
-    //메모리 누수를 줄이기 위한 removeEvent
+    //메모리 누수를 줄이기 위한 removeEvent 적용
     return () => {
       window.removeEventListener("resize", changeWidth);
     };
