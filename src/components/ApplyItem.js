@@ -1,9 +1,8 @@
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { dbService } from "../fbase";
 import styles from "../routes/Apply.module.css";
-import ApplyContent from "../routes/ApplyContent";
 
 const ApplyItem = ({
   isLoggedIn,
@@ -12,7 +11,6 @@ const ApplyItem = ({
   alreadyApply,
   isAdult,
   userObj,
-  guKey,
 }) => {
   const history = useHistory();
   const [fmyarray, setFmyArray] = useState([]);
@@ -31,6 +29,7 @@ const ApplyItem = ({
   ); //전담어른
 
   useEffect(() => {
+    //가족신청 or 전담어른 btn click 상태에 따라 가져올 쿼리
     let fmyQuery = q1;
     if (formComplete) {
       fmyQuery = q2;
@@ -44,18 +43,19 @@ const ApplyItem = ({
     });
   }, [formComplete, sGu]);
 
+  //원하는 폼 클릭 시
   const onClick = (fmyarray) => {
     const goToDetail = () => {
       history.push({
-        pathname: `/applycontent/${fmyarray}`,
+        pathname: `/applycontent/${fmyarray.id}`,
       });
     };
+
     if (!isLoggedIn) {
       alert("로그인 후 이용해 주세요.");
     } else if (alreadyApply) {
       if (fmyarray.applyerId !== userObj.uid) {
-        //본인이 작성한 폼은 볼 수 있음
-        alert("이미 신청한 폼이 존재합니다.");
+        alert("이미 신청한 폼이 존재합니다."); //본인이 작성한 폼은 볼 수 있음
       } else goToDetail();
     } else {
       if (formComplete) {
@@ -85,7 +85,7 @@ const ApplyItem = ({
               className={styles.form}
               key={idx}
               onClick={() => {
-                onClick(fmyarray.id);
+                onClick(fmyarray);
               }}
             >
               <>

@@ -16,34 +16,36 @@ import { Link } from "react-router-dom";
 import { seoulRegion } from "../components/OptionOfRegion";
 const ApplyContentDetail = ({ userObj, applyObject }) => {
   const history = useHistory();
-  //const location = useLocation();
-  //const applyObject = location.state.applyObject;
-
   const applyObjRef = doc(dbService, "Family", `${applyObject.applyerId}`); // 업데이트 시 필요
   const userObjRef = doc(dbService, "userObj", `${userObj.uid}`);
-  const [formFull, setFormFull] = useState(false); //전담어른 신청 내용 페이지 or 가족신청 내용 페이지
+  const [formFull, setFormFull] = useState(false); //전담어른신청 페이지 or 가족신청 페이지
 
   let email = userObj.email;
-  let nickName = "";
+  //let nickName = "";
+  const [nickName, setNickName] = useState("");
   const formId = applyObject.applyerId; // 신청 후 본인 userObj에 신청 폼 id 기록
 
   const [mode, setMode] = useState(false); // 삭제 or 신청
+  const [key, setKey] = useState(0); //특정 지역 목록으로 돌아가기 위한 key(라우팅 id)
 
   //자신 이름 가져옴 + 가족신청or전담어른신청 여부 판단
   const GetDoc = async () => {
     const userObjSnap = await getDoc(userObjRef);
-    if (userObjSnap.exists()) {
-      nickName = userObjSnap.data().userObject.nickname;
-    }
+    if (userObjSnap.exists())
+      setNickName(userObjSnap.data().userObject.nickname);
     if (applyObject.restOfFmy === 0) setFormFull(true);
   };
 
   useEffect(() => {
-    //신청폼 작성자이면 삭제모드 /// 아니면 신청모드
-    if (userObj.uid === applyObject.applyerId) {
-      setMode(true);
-    }
     GetDoc();
+
+    //신청폼 작성자이면 삭제모드 /// 아니면 신청모드
+    if (userObj.uid === applyObject.applyerId) setMode(true);
+
+    //목록으로 돌아갈 때 현재 content에 해당하는 지역 목록으로 가기 위한 key(지역 id)
+    seoulRegion.map((item, key) => {
+      if (item.name === applyObject.seoulGu) setKey(key);
+    });
   }, []);
 
   //작성자가 본인 폼 삭제
@@ -107,15 +109,6 @@ const ApplyContentDetail = ({ userObj, applyObject }) => {
       history.push({ pathname: `/apply/${key}` });
     });
   };
-
-  const [key, setKey] = useState(0);
-  useEffect(() => {
-    seoulRegion.map((item, key) => {
-      if (item.name === applyObject.seoulGu) {
-        setKey(key);
-      }
-    });
-  }, []);
 
   return (
     <div className={styles.container}>
