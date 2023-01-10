@@ -98,8 +98,9 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
           applyList: state.applyerModi.filter(
             (Element) => Element !== nickname
           ),
-          //applyList: deleteField(),
-          // deleteField(),
+          applyList_email: state.applyerEmailModi.filter(
+            (Element) => Element !== userObj.email
+          ),
         }).then(() => {
           history.push("/");
         });
@@ -124,7 +125,7 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
             {/* 신청 내역이 있을 경우 or 없을 경우 */}
             {/* 신청 내역이 있을 때 */}
             {!loading && existForm && (
-              <>
+              <div>
                 <div className={styles.titleDiv}>
                   <img
                     src={require(`../img/인덱스3.png`)}
@@ -167,7 +168,7 @@ function ProfileUpdate({ userObj, refreshUserObj }) {
                     </>
                   ) : null}
                 </form>
-              </>
+              </div>
             )}
             {/* 신청한 가족이 없을 때 */}
             {!loading && !existForm && (

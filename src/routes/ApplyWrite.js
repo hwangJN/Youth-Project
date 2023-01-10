@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import { seoulRegion } from "../components/OptionOfRegion";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
@@ -7,11 +7,12 @@ import { dbService } from "../fbase";
 import styles from "./ApplyWrite.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPeopleRoof } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
 const ApplyWrite = ({ userObj }) => {
   const userObjRef = doc(dbService, "userObj", `${userObj.uid}`);
   const [state, setState] = useState({
-    seoulGu: "강남구",
+    seoulGu: "강남구", // map에서 가족신청 btn을 누른 경우 지역 초기값
     seoulDong: "-----------",
     formTitle: "",
     formContent: "",
@@ -19,7 +20,16 @@ const ApplyWrite = ({ userObj }) => {
     numofFmy: 2,
     restOfFmy: 1,
   });
-
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state !== undefined) {
+      setState({ ...state, seoulGu: location.state.sGu });
+    } else {
+      //역 history(뒤로가기, 앞으로 가기)로 인해 state값이 초기화되서 없을 때(undefined)
+      alert("유효하지 않은 페이지입니다.");
+      history.push("/");
+    }
+  }, []);
   let applyList = [];
   let applyList_email = [];
 
@@ -96,6 +106,7 @@ const ApplyWrite = ({ userObj }) => {
   const goToApplyMain = () => {
     history.push({ pathname: "/apply", state: { sGu: state.seoulGu } });
   };
+
   const onCheck = () => {
     setState({
       ...state,

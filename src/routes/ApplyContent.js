@@ -1,22 +1,8 @@
-import { useHistory, useParams } from "react-router";
-import styles from "./ApplyContent.module.css";
-
-import {
-  collection,
-  deleteDoc,
-  deleteField,
-  doc,
-  getDoc,
-  onSnapshot,
-  query,
-  updateDoc,
-  where,
-} from "firebase/firestore";
-
+import { useParams } from "react-router";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { dbService } from "../fbase";
 import { useState } from "react";
 import { useEffect } from "react";
-import ApplyContent_Detail from "../components/ApplyContentDetail";
 import ApplyContentDetail from "../components/ApplyContentDetail";
 
 const ApplyContent = ({ userObj }) => {
@@ -25,7 +11,7 @@ const ApplyContent = ({ userObj }) => {
   const q1 = query(
     collection(dbService, "Family"),
     where("complete", "==", false)
-  ); //보호종료
+  );
   const [fmyarray, setFmyArray] = useState([]);
   useEffect(() => {
     onSnapshot(q1, (snapshot) => {
@@ -39,15 +25,9 @@ const ApplyContent = ({ userObj }) => {
 
   return (
     <div>
-      {fmyarray.map((item) => {
+      {fmyarray.map((item, key) => {
         if (item.id === id) {
-          return (
-            <ApplyContentDetail
-              userObj={userObj}
-              applyObject={item}
-              sGu={item.seoulGu}
-            />
-          );
+          return <ApplyContentDetail userObj={userObj} applyObject={item} />;
         }
       })}
     </div>

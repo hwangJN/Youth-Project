@@ -115,11 +115,12 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
     sex: "man",
     protect: "protect",
   });
+  let collection = "";
+  const [applyForm, setApplyForm] = useState();
   useEffect(() => {
     const getUser = async () => {
       const userObjRef = doc(dbService, "userObj", `${userObj.uid}`);
       const userObjSnap = await getDoc(userObjRef);
-      let collection = "";
 
       if (userObjSnap.exists()) {
         collection = userObjSnap.data().userObject;
@@ -129,6 +130,9 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
           sex: collection.sex,
           protect: collection.protect,
         });
+      }
+      if (userObjSnap.data().applyForm !== undefined) {
+        setApplyForm(userObjSnap.data().applyForm);
       }
     };
 
@@ -166,7 +170,13 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
       });
     }
   };
-  const goToProfileUpdateComplete = () => {
+  const goToProfileUpdateComplete = async () => {
+    if (applyForm) {
+      await updateDoc(doc(dbService, "userObj", `${userObj.uid}`), {
+        applyForm,
+      });
+    }
+
     alert("수정되었습니다.");
     history.push("/");
   };
@@ -181,7 +191,7 @@ function ProfileForm({ userObj, refreshUserObj, setMyFmyBtn, setIdentity }) {
       sex: profileState.sex,
       protect: profileState.protect,
     };
-    console.log(userObject);
+
     await setDoc(doc(dbService, "userObj", `${userObj.uid}`), {
       userObject,
     }).then((data) => {
