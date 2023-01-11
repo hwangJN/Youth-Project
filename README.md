@@ -37,8 +37,9 @@
 |:---:|:---:|
 |<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/211730790-2e79d2bb-7d1d-410a-90db-bfc63606f873.gif" height="250" width="400"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211733579-a2798640-dfd5-4ba6-8190-979d90f7d0f1.gif" height="250" width="400">|
 |로그인/회원가입|커뮤니티|
-|<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/211733450-9ebb8c66-adca-4ff3-a15d-4c652c566ff6.gif" height="250" width="400"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211726563-59a849a9-ba06-45ed-8692-531b155861b1.gif" height="250" width="400">|  
+|<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/211733450-9ebb8c66-adca-4ff3-a15d-4c652c566ff6.gif" height="250" width="400"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211733450-9ebb8c66-adca-4ff3-a15d-4c652c566ff6.gif" height="250" width="400">|  
 |가족신청|프로그램|
-|<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/211733304-b31b00ce-363e-4722-aed7-7d5c1bb74685.gif" height="250" width="400"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211726563-59a849a9-ba06-45ed-8692-531b155861b1.gif" height="250" width="400">|
+|<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/211733304-b31b00ce-363e-4722-aed7-7d5c1bb74685.gif" height="250" width="400"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211733450-9ebb8c66-adca-4ff3-a15d-4c652c566ff6.gif" height="250" width="400">|   
+
 ## :hammer: Tech Stack
 <img width="80%" src="https://user-images.githubusercontent.com/86361624/211475332-319541c8-598c-43d1-9426-a6e3fcdcc214.PNG"/>
