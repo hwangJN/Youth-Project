@@ -1,5 +1,5 @@
 <div align=center>
-	<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Youth%20Project&fontSize=90" />	
+	<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Youth%20Project&fontSize=90" />
 </div>
 
 # Youth Project
@@ -7,7 +7,7 @@
 - **한줄 소개 :** 보호종료청년을 위한 함께서기 사이트
 - **프로젝트명 :** 함께서기
 - **프로젝트 1차 제작 :** 2022-09-18 ~ 2022-11-07
-- **프로젝트 2차 제작 :** 2023-01-04 ~ 
+- **프로젝트 2차 수정 :** 2023-01-04 ~ 2023-01-11
 - **팀원 :** 김현지, 황지나
 
 ## :scroll: Intro
@@ -32,14 +32,14 @@
 |[@hyeonjy](https://github.com/hyeonjy)|[@hwangJN](https://github.com/hwangJN)|
 |hg024246@gmail.com|wlsk401@gmail.com|
 
-## :computer: Home page
+## :computer: Pages
 |메인 페이지|함께소개|
 |:---:|:---:|
 |<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/211730790-2e79d2bb-7d1d-410a-90db-bfc63606f873.gif" height="250" width="400"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211733579-a2798640-dfd5-4ba6-8190-979d90f7d0f1.gif" height="250" width="400">|
-|로그인/회원가입|커뮤니티|
-|<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/211733450-9ebb8c66-adca-4ff3-a15d-4c652c566ff6.gif" height="250" width="400"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211733450-9ebb8c66-adca-4ff3-a15d-4c652c566ff6.gif" height="250" width="400">|  
-|가족신청|프로그램|
-|<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/211733304-b31b00ce-363e-4722-aed7-7d5c1bb74685.gif" height="250" width="400"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211733450-9ebb8c66-adca-4ff3-a15d-4c652c566ff6.gif" height="250" width="400">|   
+|**로그인/회원가입**|**커뮤니티 작성**|
+|<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/211733450-9ebb8c66-adca-4ff3-a15d-4c652c566ff6.gif" height="250" width="400"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211737233-d3e9da38-9dd0-44e2-ad69-4db8b3a166fd.gif" height="250" width="400">|  
+|**가족신청**|**프로그램**|
+|<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/211733304-b31b00ce-363e-4722-aed7-7d5c1bb74685.gif" height="250" width="400"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211737111-3fff9471-a17d-4a22-909f-57c9ef5ba79a.gif" height="250" width="400">|   
 
 ## :hammer: Tech Stack
 <img width="80%" src="https://user-images.githubusercontent.com/86361624/211475332-319541c8-598c-43d1-9426-a6e3fcdcc214.PNG"/>
