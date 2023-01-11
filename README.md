@@ -32,5 +32,10 @@
 |[@hyeonjy](https://github.com/hyeonjy)|[@hwangJN](https://github.com/hwangJN)|
 |hg024246@gmail.com|wlsk401@gmail.com|
 
+## 테스트
+|홈페이지|홈페이지2|
+|:---:|:---:|
+|<img alt="김현지" src="https://avatars.githubusercontent.com/u/86361624?v=4" height="100" width="100"> |<img alt="홈페이지" src="https://user-images.githubusercontent.com/86361624/211726563-59a849a9-ba06-45ed-8692-531b155861b1.gif" height="100" width="100">|
+
 ## :hammer: Tech Stack
 <img width="80%" src="https://user-images.githubusercontent.com/86361624/211475332-319541c8-598c-43d1-9426-a6e3fcdcc214.PNG"/>
