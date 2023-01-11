@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Youth-Project/static/css/main.91c3f658.css",
+    "main.css": "/Youth-Project/static/css/main.6c778c2c.css",
     "main.js": "/Youth-Project/static/js/main.635adca3.js",
     "static/media/meal.jpg": "/Youth-Project/static/media/meal.61df172061b35cc03e34.jpg",
     "static/media/guitar.jpg": "/Youth-Project/static/media/guitar.420803b8c316140535a1.jpg",
@@ -49,11 +49,11 @@
     "static/media/mapSeoul_photo.png": "/Youth-Project/static/media/mapSeoul_photo.67eaa9720dbe246eda02.png",
     "static/media/메인2.jpg": "/Youth-Project/static/media/메인2.e1c8f9a6ecaf066d9907.jpg",
     "index.html": "/Youth-Project/index.html",
-    "main.91c3f658.css.map": "/Youth-Project/static/css/main.91c3f658.css.map",
+    "main.6c778c2c.css.map": "/Youth-Project/static/css/main.6c778c2c.css.map",
     "main.635adca3.js.map": "/Youth-Project/static/js/main.635adca3.js.map"
   },
   "entrypoints": [
-    "static/css/main.91c3f658.css",
+    "static/css/main.6c778c2c.css",
     "static/js/main.635adca3.js"
   ]
 }
