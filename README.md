@@ -41,6 +41,7 @@
 - 전담어른 목록에서 전담어른 배치
 
 > :pushpin: **가족신청 과정**
+<img alt="김현지" src="https://user-images.githubusercontent.com/86361624/217441148-0c11f9c3-c7af-41f3-b3c4-48a8ecc7175a.PNG" height="270" width="450">
 
 ## :computer: Pages
 |메인 페이지|함께소개|
